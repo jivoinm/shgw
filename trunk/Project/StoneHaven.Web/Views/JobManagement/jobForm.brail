@@ -1,0 +1,83 @@
+﻿<?brail OutputSubView("/SharedViews/menu") ?>
+<?brail component CaptureFor, {@Id: "script"}: ?>
+<script language="javascript">
+
+function saveJob(){
+    $('#form1').validate();
+    if($('#form1').valid()){
+        var values = $('[name*=job]').serialize();
+        AjaxUpdateCall('${Url.For({@controller:'JobManagement',@action:'SaveJob'})}','#formPlace','#formPlace',values);
+    }
+}
+
+function addNewDeposit(jobId){
+  $.ajax({
+    url: '${Url.For({@controller:'JobManagement',@action:'AddDeposit'})}',
+     type:'POST',
+     cache: false,
+     dataType: 'html',
+     data:'jobId='+jobId,
+     success:function(html){
+        $('#deposits').html(html);
+        }
+  });
+}
+function deleteDeposit(depositId){
+  $.ajax({
+    url: '${Url.For({@controller:'JobManagement',@action:'DeleteDeposit'})}',
+     type:'POST',
+     cache: false,
+     dataType: 'html',
+     data:'depositId='+depositId,
+     success:function(html){
+        $('#deposits').html(html);
+        }
+  });
+}
+
+function saveNote(){
+ $('#form2').validate();
+    if($('#form2').valid()){
+        var values = $('[name*=note]').serialize();
+        AjaxUpdateCall('${Url.For({@controller:'JobManagement',@action:'SaveNote'})}','#notePlaceHolder','#notes',values);
+    }else
+        alert('Validation error');
+}
+
+function deleteNote(noteId){
+    if(noteId>0){
+        AjaxUpdateCall('${Url.For({@controller:'JobManagement',@action:'DeleteNote'})}','#notePlaceHolder','#notes','noteId='+noteId);
+    }
+}
+</script>
+<?brail end ?>
+
+
+<div id="formPlace">
+<?brail OutputSubView("/JobManagement/_form") ?>
+</div>
+<div id="notesWrap" style="display:none">
+<div id="notes">
+<br>
+${Form.FormTag({@immediate:"false", @useTitles:"true"})}
+<fieldset style="width:90%">
+<legend>Add New Note</legend>
+<ol>
+    <li>
+        ${Form.LabelFor("note.Name","Name")}
+        ${Form.TextFieldValue("note.Name",currentUser,{@class:"required"})}
+        ${Form.HiddenField("note.Job.Id",job.Id)}
+   </li>
+    <li>
+        ${Form.LabelFor("note.Description","Description")}
+        ${Form.TextArea("note.Description",{@class:"required"})}
+   </li>
+</ol>
+<input type="button" onclick="saveNote()" value="Save Note" />
+</fieldset>
+${Form.EndFormTag()}
+<div id="notePlaceHolder">
+<?brail OutputSubView("/jobManagement/_notes") ?>
+</div>
+</div>
+</div>

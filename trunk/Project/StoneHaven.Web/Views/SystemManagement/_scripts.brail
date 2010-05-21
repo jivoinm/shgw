@@ -1,0 +1,94 @@
+﻿<?brail component CaptureFor, {@Id: "script"}: ?>
+<link href="${siteRoot}/content/js/jquery-treeview/jquery.treeview.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="${siteroot}/content/js/jquery-treeview/jquery.treeview.js"></script>
+<script type="text/javascript">
+
+function saveItem(){
+    $('#form1').validate();
+    if($('#form1').valid()){
+        var values = $('[name*=item]').serialize();
+        //AjaxUpdateCall('${Url.For({@controller:'SystemManagement',@action:'SaveItem'})}','#content',null,values);
+        var url = '${Url.For({@controller:'SystemManagement',@action:'SaveItem'})}';
+        
+        AjaxCall(url,'#formContent','#formContent',values,'POST','alert(\'Saved with success. To see the changes reload the page.\');');
+    }
+}
+function saveProject(){
+    $('#form1').validate();
+    if($('#form1').valid()){
+        var values = $('[name*=item]').serialize();
+        AjaxUpdateCall('${Url.For({@controller:'SystemManagement',@action:'SaveProject'})}','#formContent','#formContent',values);
+        
+    }
+}
+function saveCompany(){
+    $('#form1').validate();
+    if($('#form1').valid()){
+        var values = $('[name*=item]').serialize();
+        AjaxUpdateCall('${Url.For({@controller:'SystemManagement',@action:'SaveCompany'})}','#formContent','#formContent',values);
+    }
+}
+
+function saveUser(){
+    $('#form1').validate();
+    if($('#form1').valid()){
+        var values = $('[name*=item]').serialize();
+        AjaxUpdateCall('${Url.For({@controller:'SystemManagement',@action:'SaveUser'})}','#formContent','#formContent',values);
+    }
+}
+function saveNewPrice(){
+    
+    if($("#priceForm").valid()){
+        var values = $("#priceForm").find("[name*=price],[name*=type],[name*=entity]").serialize();
+        var message = $("#message")
+        AjaxUpdateCall('${Url.For({@controller:'SystemManagement',@action:'SaveNewPrice'})}',message,null,values);
+        $(message).parent().parent().show();
+        return true;
+    }
+    return false;
+}
+
+function deletePrice(){
+  if($('.trSelected').length>0){ 
+     if(confirm('Are you sure you want to permanently delete selected prices?')){
+        var items = $('.trSelected');
+        var itemlist ='';
+        for(i=0;i<items.length;i++){
+            itemlist+= items[i].id.substr(3)+",";
+        } 
+       $.ajax({
+           type: "POST",
+           url: "${Url.For({@controller:'SystemManagement',@action:'DeletePrices'})}",
+           data: "ids="+itemlist,
+           success: function(data){
+               alert(data);
+               $("#gridTable").flexReload();
+           }
+         });
+     }
+     
+  }else
+     alert('Select prices to be deleted first.');
+}
+
+function loadTreeView(id,itemTip){
+    var params = 'id='+id+'&itemTip='+itemTip;
+    $('html, body').animate({scrollTop:0}, 'slow');
+    AjaxUpdateCall('${Url.For({@controller:'SystemManagement',@action:'Edit'})}','#formContent','#formContent',params);
+}
+
+function AddNewPrice(){
+    var dt = $('#form1').serializeArray();
+    var buttons = {"Save": function() {if(saveNewPrice()){alert('Price was saved with success');$(this).dialog("close");removeDialog(this);searchForm();}} ,"Close": function() { $(this).dialog("close"); } };
+
+    showRMContentDialog("${Url.For({@controller:'SystemManagement',@action:'AddNewPrice'})}?"+jQuery.param(dt)+"","Add New Price",400,330,buttons);
+
+}
+
+function removeDialog(dialog){
+	//alert(dialog);
+	$(dialog).remove();
+}
+</script>
+
+<?brail end?>

@@ -1,0 +1,48 @@
+﻿<?brail component CaptureFor, {@Id: "sidebar"}:
+  OutputSubView("/SystemManagement/_pricesSideMenu")    
+end?>
+
+${Form.FormTag({@immediate:"false", @useTitles:"true", @class:"cmxform"})}
+${Form.HiddenField("item.Id")}
+${Form.HiddenField("itemTip")}
+
+<?brail 
+i=0
+for child in item.Childrens :
+ output Form.HiddenField("item.Childrens[${i}].Id")
+ i++
+end ?>
+
+
+<p class="info" style="width:600px;">Setup your Projects in the system. Also set the prices related to each project.</p>
+
+${Form.Button("Save",{@onclick:"saveProject();"})}
+${Form.Button("Cancel",{@onclick:"document.location='index.aspx'"})}
+<?brail if item.Id>0 :?>
+${Form.Button("Delete",{@onclick:"if(confirm('This will permanently delete ${item.Name} from the system, proceed?'))document.location='delete.aspx?id=${item.Id}&itemTip=${itemTip}'"})}
+<?brail end?>
+<fieldset>
+<legend>Project Details</legend>
+<ol>
+ <li>
+   ${Form.LabelFor("item.Parent.Id","Parent")}
+   ${Form.Select("item.Parent.Id",parentItems,{@text:"Name",@value:"Id",@firstoption:"-----"})}
+</li>
+<li>
+   ${Form.LabelFor("item.Name","Name")}
+   ${Form.TextField("item.Name")}
+</li>
+<li>
+	${Form.LabelFor("item.BumpautPrice.Price","Bumpaut Price")}
+	${AppHelper.NumericField("item.BumpoutPrice.Price",{@style:'width:65px',@round:2})}
+	${Form.HiddenField("item.BumpoutPrice.Id")}
+</li>
+<li>
+	${Form.LabelFor("item.ArchePrice.Price","Arche Price")}
+	${AppHelper.NumericField("item.ArchePrice.Price",{@style:'width:65px',@round:2})}
+	${Form.HiddenField("item.ArchePrice.Id")}
+</li>
+</ol>
+</fieldset>
+
+${Form.EndFormTag()}

@@ -1,0 +1,183 @@
+﻿
+
+${Form.UseJQueryValidation()}
+<div class="section">   
+
+${Form.FormTag({@action:@savejob,@immediate:"true", @useTitles:"false"})}
+${Form.HiddenField("job.Id")}
+${Form.HiddenField("job.JobNr")}
+${Form.HiddenField("job.CreateDate")}
+
+<p>
+    This section lets you create a new job from quote or edit existing job details. To schedule this job go to Job Status section and set the job status and scheduled date. <br/>
+    Remember after you are done modifying jobs's details to always press <strong><em>Update</em></strong> button in order your changes to be saved in the database.
+</p>
+
+${Form.Button("Save",{@onclick:"$('#isUpdate').val('1');saveJob();"})}
+${Form.Button("Cancel",{@onclick:"document.location='${Url.For({@controller:'JobManagement',@action:'index'})}'"})}
+<?brail 
+output Form.Button("Notes",{@onclick:"showDialog('#notes','Notes',600,600)",@style:"border:red solid"}) if job.JobNotes.Count>0
+output Form.Button("Notes",{@onclick:"showDialog('#notes','Notes',600,600)"}) if job.JobNotes.Count==0
+?>
+${Form.Button("Print With Price",{@onclick:"showIframeDialog('${Url.For({@controller:'JobManagement',@action:'PrintPreview',@querystring:'jobId='})}${job.Id}&withPrice=1','Print Preview',800,600)"})}
+${Form.Button("Print Without Price",{@onclick:"showIframeDialog('${Url.For({@controller:'JobManagement',@action:'PrintPreview',@querystring:'jobId='})}${job.Id}','Print Preview',800,600)"})}
+${Form.Button("Open Quote",{@onclick:"document.location='${Url.For({@controller:'QuoteManagement',@action:'EditQuote',@querystring:'id='})}${job.Quotation.Id}'"})}
+
+<fieldset>
+<legend>Job Details</legend>
+<div class="left">
+<ol>
+<li>
+  <label>JobNr</label>
+  <i><strong>${job.JobNr}</strong></i>
+</li>
+<li>
+  <label>Company</label>
+  <i><strong>${job.Quotation.Company.Name}</strong></i>
+</li>
+<li>
+  <label>Customer Name</label>
+  <i><strong>${job.Quotation.Customer.CustomerName}</strong></i>
+</li>
+<li>
+  <label>Site Address</label>
+  <i><strong>${job.Quotation.Customer.Address}</strong></i>
+</li>
+<li>
+  <label>Postal Code</label>
+  <i><strong>${job.Quotation.Customer.PostalCode}</strong></i>
+</li>
+<li>
+  <label>City</label>
+  <i><strong>${job.Quotation.Customer.City.Name}</strong></i>
+</li>
+<li>
+  <label>Home Phone</label>
+  <i><strong>${job.Quotation.Customer.Phone}</strong></i>
+</li>
+<li>
+  <label>Business Phone</label>
+  <i><strong>${job.Quotation.Customer.Fax}</strong></i>
+</li>
+</ol>
+</div>
+
+<div class="right" style="background-color:#c9c9c9">
+  <ol>
+  <li>
+    ${Form.LabelFor("job.Status","Status")}
+    ${Form.Select("job.Status",FormHelper.EnumToPairs(jobStatusTypes),{@value:@First, @text:@Second})}
+  </li>
+  <li>
+    ${Form.LabelFor("job.TemplateDate","Template Date")}
+    ${AppHelper.DateTimeField("job.TemplateDate",{@style:'width:85px'})}&nbsp;by&nbsp;
+    ${Form.TextField("job.TemplateBy",{@style:"width:80px"})}
+  </li>  
+  <li>
+    ${Form.LabelFor("job.InstallationDate","Install Date")}
+    ${AppHelper.DateTimeField("job.InstallationDate",{@style:'width:85px'})}&nbsp;by&nbsp;
+    ${Form.TextField("job.InstallationBy",{@style:"width:80px"})}
+  </li>  
+    <li>
+    ${Form.LabelFor("job.ServiceDate","Service Date")}
+    ${AppHelper.DateTimeField("job.ServiceDate",{@style:'width:85px'})}&nbsp;by&nbsp;
+    ${Form.TextField("job.ServiceBy",{@style:"width:80px"})}
+  </li>  
+
+  </ol>
+</div>
+</fieldset>
+
+<div><a href="javascript:void(0)" onclick="$('#financialDetails').toggle()">Show/Hide Financial details</a></div>
+<?brail OutputSubView("/JobManagement/_payments") ?>
+
+<div>
+${Form.HiddenField("job.Quotation.Id")}
+<?brail 
+i as int 
+i=0 
+for quoteItem in job.Quotation.QuoteItems:?> 
+${Form.HiddenField("job.JobItems[${i}].Id")}
+<fieldset style="background-color:#c9c9c9">
+<legend>${quoteItem.Project.Name}</legend>
+<table width="100%">
+<tr>
+    <td valign=top>
+        <ol>
+        <li>
+            ${Form.LabelFor("job.JobItems[${i}].FinalColorGroup.Id","Color Group&nbsp;${quoteItem.ColorGroup.Name}")}
+            ${Form.Select("job.JobItems[${i}].FinalColorGroup.Id",quoteItem.ColorGroup.Childrens,{@text:@Name,@value:@id,@style:'width:255px'})}
+        </li>
+        
+         <li>
+            ${Form.LabelFor("job.JobItems[${i}].SinkLocation","Sink Location")}
+            ${Form.TextField("job.JobItems[${i}].SinkLocation",{@maxlength:'255',@style:'width:255px'})}
+        </li>
+        <li>
+            ${Form.LabelFor("job.JobItems[${i}].SlabLocation","Slab Location")}
+            ${Form.TextField("job.JobItems[${i}].SlabLocation",{@maxlength:'255',@style:'width:255px'})}
+        </li>
+
+        <li>
+            ${Form.LabelFor("job.JobItems[${i}].Thicknes","Thicknes")}
+            ${Form.TextField("job.JobItems[${i}].Thicknes",{@maxlength:'255',@style:'width:255px'})}
+        </li>
+        
+        <li>
+            ${Form.LabelFor("job.JobItems[${i}].FinalEdge.Id","Edge&nbsp;${quoteItem.Edge.Name}")}
+            ${Form.Select("job.JobItems[${i}].FinalEdge.Id",quoteItem.Edge.Childrens,{@text:@Name,@value:@id})}
+        </li>
+        <li>
+            ${Form.LabelFor("job.JobItems[${i}].Backsplash","Backsplash")}
+            ${Form.TextField("job.JobItems[${i}].Backsplash",{@maxlength:'255',@style:'width:255px'})}
+        </li>
+        <li>
+            ${Form.LabelFor("job.JobItems[${i}].TagNr","Tag#")}
+            ${AppHelper.NumericField("job.JobItems[${i}].TagNr",{@maxlength:'10'})}
+            </li>
+            <li>
+            ${Form.LabelFor("job.JobItems[${i}].NrOfSlabs","# of Slabs")}
+            ${AppHelper.NumericField("job.JobItems[${i}].NrOfSlabs",{@maxlength:'10',@style:'width:50px'})}
+            </li>        
+        </ol>
+    </td>
+    <td valign=top>
+        <ol>
+          
+            <?brail
+            if quoteItem.Stove!=null :?>
+            <li>
+                ${Form.LabelFor("Stove","Stove")}
+                ${quoteItem.Stove.Name}
+            </li>
+            <?brail end?>
+            
+            <?brail if job.Quotation.QuoteItems[i].Sink!=null:?>
+            <li>
+            ${Form.LabelFor("job.Quotation.QuoteItems[${i}].Sink.Name","Sink")}
+            ${job.Quotation.QuoteItems[i].Sink.Name}
+            </li>
+             <li>
+            ${Form.LabelFor("job.JobItems[${i}].SinkType","Sink Type")}
+            ${Form.TextField("job.JobItems[${i}].SinkType",{@maxlength:'255',@style:'width:255px'})}
+            </li>
+            <li>
+            ${Form.LabelFor("job.Quotation.QuoteItems[${i}].NumberOfSinks","# Sinks")}
+            ${job.Quotation.QuoteItems[i].NumberOfSinks}
+            </li>
+            
+            <?brail end?>
+        </ol>    
+    </td>
+</tr>
+</table>
+</fieldset>
+<?brail 
+i++ 
+end?>
+</div>
+${Form.EndFormTag()}
+</div>
+
+
+

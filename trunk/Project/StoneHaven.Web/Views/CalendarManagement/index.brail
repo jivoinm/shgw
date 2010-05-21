@@ -1,0 +1,16 @@
+﻿<?brail OutputSubView("/SharedViews/menu") ?>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#navBack").click(function(){
+        AjaxCall('${Url.For({@controller:'CalendarManagement',@action:'GoToDate',@querystring:'date='})}${currentDate.AddMonths(-1).ToShortDateString()}','#calendarPlace','#calendarPlace','POST');
+    });
+    $("#navForward").click(function(){
+        AjaxCall('${Url.For({@controller:'CalendarManagement',@action:'GoToDate',@querystring:'date='})}${currentDate.AddMonths(1).ToShortDateString()}','#calendarPlace','#calendarPlace','POST');
+    });
+});
+
+</script>
+
+<div id="calendarPlace" class="section">
+<?brail component Calendar,{@Date:currentDate}?>
+</div>

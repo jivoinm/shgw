@@ -1,0 +1,45 @@
+﻿<div id="formContent">
+${Form.FormTag({@immediate:"false", @useTitles:"true", @class:"cmxform"})}
+${Form.HiddenField("item.Id")}
+${Form.HiddenField("itemTip")}
+
+<?brail 
+i=0
+for child in item.Childrens :
+ output Form.HiddenField("item.Childrens[${i}].Id")
+ i++
+end ?>
+<h2 class="ico_mug">Add New / Edit ${itemTip}</h2>
+
+<p class="info" style="width:600px">Save ${itemTip} details. Select Parent field only if you want to place this item under and leave it empty if this item is to be the parent.
+Ex. to set <strong>Group -> SubGroupItem</strong>, create first the <strong>Group</strong> with parent field empty then create new item <strong>SubGroupItem</strong> and set the Group1 to be its parent
+</p>
+
+${Form.Button("Save",{@onclick:"saveItem();"})}
+${Form.Button("Cancel",{@onclick:"document.location='index.aspx'"})}
+<?brail if item.Id>0 :?>
+${Form.Button("Delete",{@onclick:"if(confirm('This will permanently delete ${item.Name} from the system, proceed?'))document.location='delete.aspx?id=${item.Id}&itemTip=${itemTip}'"})}
+<?brail end?>
+<fieldset>
+<legend>Details</legend>
+<ol>
+ <li>
+   ${Form.LabelFor("item.Parent.Id","Parent")}
+   ${Form.Select("item.Parent.Id",parentItems,{@text:"Name",@value:"Id",@firstoption:"-----",@style:"width:250px"})}
+</li>
+<li>
+   ${Form.LabelFor("item.Name","Name")}
+   ${Form.TextField("item.Name",{@style:"width:250px"})}
+</li>
+<?brail if itemTip == "ColorGroup":?>
+<li>
+   ${Form.LabelFor("item.Name","Type")}
+   ${Form.Select("item.ColorGroupType",FormHelper.EnumToPairs(colorGroupTypes),{@value:@First, @text:@Second})}
+</li>
+<?brail end ?>
+</ol>
+<?brail if item.Id>0 :?>
+</fieldset>
+<?brail end?>
+${Form.EndFormTag()}
+</div>

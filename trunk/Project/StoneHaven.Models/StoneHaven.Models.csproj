@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7C3D4082-0DCC-417D-B586-9F1F700AE202}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>StoneHaven.Models</RootNamespace>
+    <AssemblyName>StoneHaven.Models</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.ActiveRecord, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.ActiveRecord.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Components.Pagination, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Components.Pagination.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Components.Validator, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Components.Validator.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.DynamicProxy2, Version=2.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.DynamicProxy2.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Facilities.AutomaticTransactionManagement, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Facilities.AutomaticTransactionManagement.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Facilities.Logging, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Facilities.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.MicroKernel, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.MicroKernel.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Services.Logging.Log4netIntegration, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Services.Logging.Log4netIntegration.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.0.3, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Other\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Other\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=2.1.0.1001, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Other\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Commons, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Rhino\Rhino.Commons.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Commons.ActiveRecord, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Rhino\Rhino.Commons.ActiveRecord.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Commons.Clr, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Rhino\Rhino.Commons.Clr.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Commons.NHibernate, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Rhino\Rhino.Commons.NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.DSL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Rhino\Rhino.DSL.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BackSplashMeasurement.cs" />
+    <Compile Include="ColorGroup.cs" />
+    <Compile Include="ColorGroupPrice.cs" />
+    <Compile Include="Company.cs" />
+    <Compile Include="CounterMeasurement.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="Edge.cs" />
+    <Compile Include="EdgeMeasurement.cs" />
+    <Compile Include="EdgePrice.cs" />
+    <Compile Include="Filters\AbstractSearchFilter.cs" />
+    <Compile Include="Filters\JobSearchFilter.cs" />
+    <Compile Include="Filters\PriceFilter.cs" />
+    <Compile Include="Filters\QuoteSearchFilter.cs" />
+    <Compile Include="Filters\ReportFilter.cs" />
+    <Compile Include="UserMessage.cs" />
+    <Compile Include="ParentIdentifier.cs" />
+    <Compile Include="Job.cs" />
+    <Compile Include="Measurement.cs" />
+    <Compile Include="PriceBase.cs" />
+    <Compile Include="Project.cs" />
+    <Compile Include="ProjectPrice.cs" />
+    <Compile Include="QueryBuilder.cs" />
+    <Compile Include="QuoteItem.cs" />
+    <Compile Include="Quotation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DB\EntityServices.cs" />
+    <Compile Include="Services\DB\ReportServices.cs" />
+    <Compile Include="Services\DB\JobServices.cs" />
+    <Compile Include="Services\DB\QuoteServices.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\DB\UserServices.cs" />
+    <Compile Include="Services\IEntityServices.cs" />
+    <Compile Include="Services\IJobServices.cs" />
+    <Compile Include="Services\IQuoteServices.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\IReportServices.cs" />
+    <Compile Include="Services\IUserServices.cs" />
+    <Compile Include="Sink.cs" />
+    <Compile Include="SinkPrice.cs" />
+    <Compile Include="Stove.cs" />
+    <Compile Include="StovePrice.cs" />
+    <Compile Include="Thicknes.cs" />
+    <Compile Include="ThicknesPrice.cs" />
+    <Compile Include="Traceable.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="Where.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

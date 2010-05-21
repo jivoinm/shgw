@@ -1,0 +1,10 @@
+﻿<ul>
+<?brail 
+for item in items :
+ output "<li><span class=\"folder\"><a href=\"javascript:void(0);\" onclick=\"loadTreeView(${item.Id},'${itemTip}')\">${item.Name}</a></span>" if item.Childrens.Count>0
+ output "<li><span class=\"file\"><a href=\"javascript:void(0);\" onclick=\"loadTreeView(${item.Id},'${itemTip}')\">${item.Name}</a></span>" if item.Childrens.Count==0
+ OutputSubView("/SystemManagement/_treeRender",{@items:item.Childrens,@itemTip:itemTip}) if item.Childrens.Count>0
+ output "</li>"
+end
+?>
+</ul>

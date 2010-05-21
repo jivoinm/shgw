@@ -1,0 +1,67 @@
+﻿<?brail OutputSubView("/SharedViews/menu") ?>
+<?brail component PageViewComponent, {"pageTitle":"Jobs"}:
+section tabs:?>
+
+<?brail component TabSecurityComponent, {@link:'index',@action:'*', @text:'Quick Search'}?>
+<?brail component TabSecurityComponent, {@link:'advancedSearch',@action:'*', @text:'Advanced Search'}?>
+
+<?brail end section search:?>
+<div id="advancedSearch">
+<form id="advancedForm"> 
+        <ol>
+            <li>
+                ${Form.LabelFor("filter.JobNr","Job #")}
+                ${Form.TextField("filter.JobNr")}
+            </li>
+            <li>
+                ${Form.LabelFor("filter.Status","Job Status")}
+                ${Form.Select("filter.Status",Form.EnumToPairs(jobStatuses),{@firstoption:"----",@firstoptionvalue:"",@text:"Second",@value:"First"})}
+            </li>
+            <li>
+                ${Form.LabelFor("filter.CompanyId","Company")}
+                ${Form.Select("filter.CompanyId",companies,{@firstoption:"----",@text:"Name",@value:"Id"})}
+            </li>
+            <li>
+                ${Form.LabelFor("filter.CustomerName","Customer Name")}
+                ${Form.TextField("filter.CustomerName")}
+            </li>
+            <li>
+                ${Form.LabelFor("filter.CustomerPhone","Customer Phone")}
+                ${Form.TextField("filter.CustomerPhone")}
+            </li>
+             <li>
+                ${Form.LabelFor("filter.ScheduledDate","Scheduled Date")}
+                ${Form.TextField("filter.ScheduledStartDate",{@style:"width:80px", @size:"10"})}&nbsp;-&nbsp;
+                ${Form.TextField("filter.ScheduledEndDate",{@style:"width:80px", @size:"10"})}
+                
+            </li>
+            
+        </ol>
+</form>            
+  <div style="vertical-align:middle;border-top-style:solid;border-top-width:1px" align='center'>
+  ${Form.Button("Search",{@onClick:"searchForm()"})}&nbsp;
+  ${Form.Button("Cancel",{@onClick:"location.reload(true)"})}
+  </div>
+</div>
+<script>
+$("#filter_ScheduledStartDate,#filter_ScheduledEndDate").datepicker();
+
+function customRange(input) { 
+    return {minDate: (input.id == "filter_ScheduledDate_Start" ? $("#filter_ScheduledDate_Start").datepicker("getDate") : null), 
+        maxDate: (input.id == "filter_ScheduledDate_End" ? $("#filter_ScheduledDate_End").datepicker("getDate") : null)}; 
+} 
+function searchForm(){
+    var dt = $('#advancedForm').serializeArray();
+    
+    $("#gridTable").flexOptions({params: dt});
+    $('#gridTable').flexOptions({newp: 1}).flexReload();
+    return true;
+}
+</script>
+<?brail end
+section content:
+?>
+<?brail OutputSubView("/jobManagement/search/_jobSearchGrid") ?>
+<?brail end end?>
+
+

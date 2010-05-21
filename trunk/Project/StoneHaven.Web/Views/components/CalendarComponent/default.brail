@@ -1,0 +1,188 @@
+﻿<?brail component CaptureFor, {@Id: "script"}: ?>
+<link type="text/css" rel="stylesheet" href="${siteRoot}/content/Calendar/calendar.css">
+<?brail end ?>
+  <div id="warningBox" style="color:#aa0000;">
+    <!-- MESSAGE -->
+  </div>
+
+  <div id="container" class="locale-en" style="width: 100%; position: relative; height: 100%;">
+    <div class="calendar-container">
+      <div class="header" id="nav1" style="overflow:visible">
+        <div class="date-controls">
+          <table class="nav-table" cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+              <tr>
+                <!--<td class="date-nav-buttons">
+                <button class="today-button" id="todayButton1">Today</button>
+                </td>-->
+                <td><img src="${siteRoot}/Content/Calendar/btn_prev_sm.gif" width="22" height="17" alt="previous" title="previous" class="navbutton navBack" id="navBack">
+                </td>
+                <td>
+                <img src="${siteRoot}/Content/Calendar/btn_next_sm.gif" width="22" height="17" alt="next" title="next" class="navbutton navForward" id="navForward">
+                </td>
+                <td id="dateEditableBox1" class="date-picker-off">
+                
+                <div class="date-top" id="currentDate1">
+                    ${calendarPeriod}
+                  </div>
+                </td>
+
+                <td id="dateMenuArrow1" class="date-picker-off">
+                <img src="${siteRoot}/Content/Calendar/menu_arrow_open.gif" id="arrowImg1" class="arrowImg" width="9" height="9"></td>
+
+                <td class="navSpacer">&nbsp;</td>
+<!--
+                <td><img src="${siteRoot}/Content/Calendar/icon_print.gif" style="cursor: pointer;" onclick="goog$calendar$CalendarContainer$1printCalendar()" title="Print my calendar (shows preview)" width="16" height="16"></td>
+
+                <td>
+                  <div class="tab-name" onclick="goog$calendar$CalendarContainer$1printCalendar()">
+                  Print
+                  </div>
+                </td>-->
+
+                <td id="calendarTabs1">
+                  <table cellpadding="0" cellspacing="0">
+                    <tbody>
+                      <tr>
+                        <td class="view-tab">
+                          <div class=
+                          "view-tab-unselected first-tab t1">
+                            &nbsp;
+                          </div>
+
+                          <div class=
+                          "view-tab-unselected first-tab t2">
+                            &nbsp;
+                          </div>
+
+                          <!--<div class=
+                          "view-tab-unselected first-tab tab-name"
+                          onclick=
+                          "goog$calendar$CalendarContainer$1changeTab('week')">
+                          Week
+                          </div>-->
+                        </td>
+
+                        <td class="view-tab">
+                          <div class="view-tab-selected t1">
+                            &nbsp;
+                          </div>
+
+                          <div class="view-tab-selected t2">
+                            &nbsp;
+                          </div>
+
+                          <div class="view-tab-selected tab-name"
+                          onclick=
+                          "goog$calendar$CalendarContainer$1changeTab('month')">
+                          Month
+                          </div>
+                        </td>
+
+                        <td class="view-tab">
+                          <div class=
+                          "view-tab-unselected last-tab t1">
+                            &nbsp;
+                          </div>
+
+                          <div class=
+                          "view-tab-unselected last-tab t2">
+                            &nbsp;
+                          </div>
+
+                        <!--  <div class="view-tab-unselected last-tab tab-name" onclick="goog$calendar$CalendarContainer$1changeTab('agenda')">
+                          Agenda
+                          </div>-->
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+
+                <td class="calendar-nav"><img id="calendarListButton1" src="${siteRoot}/Content/Calendar/btn_menu6.gif" alt="" title="" width="15" height="14"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="view-cap t1">
+        &nbsp;
+      </div>
+
+      <div class="view-cap t2">
+        &nbsp;
+      </div>
+<!--  ---------------- CONTENT ----------------------------- -->
+
+      <div class="view-container-border" id="calendarContainer1">
+        <div id="viewContainer1" class="view-container" style=
+        "height: 653px;">
+          <table class="monthview mvcontainer" cellpadding="0"
+          cellspacing="0">
+            <tbody>
+              <tr class="daynames">
+                <th title="Sun" scope="col">Sun</th>
+
+                <th title="Mon" scope="col">Mon</th>
+
+                <th title="Tue" scope="col">Tue</th>
+
+                <th title="Wed" scope="col">Wed</th>
+
+                <th title="Thu" scope="col">Thu</th>
+
+                <th title="Fri" scope="col">Fri</th>
+
+                <th title="Sat" scope="col">Sat</th>
+              </tr>
+
+<!-- WEEKS -->
+            <?brail 
+            for day in calendar :
+            output "<tr class=\"week\" style=\"height: ${calCellPercent}%;\">" if day.IsWeekStart
+            output "<td><h3 class=\"nonmonthday\">&nbsp;</h3></td>" if day.IsNonMonthday
+            output "<td><h3>${day.Day}</h3></td>" if day.Day>0 and day.IsNonMonthday==false and day.CalendarEvents.Count==0
+            
+            ?>
+            <?brail if day.CalendarEvents!=null and day.CalendarEvents.Count>0 :?>
+            <td><h3>${day.Day}</h3>
+            <?brail 
+            i=0
+            for calEvent in day.CalendarEvents :
+            goto afterloop if i>5
+            ?>
+            <div class="event alldayevent startallday alldayleftside alldayrightside" style="z-index: 200; background-color: ${calEvent.Color}" 
+            onclick="window.open('${Url.For({@controller:@CalendarManagement,@action:@RenderCalendarDay,@querystring:'date='})}${calEvent.Range.Start}','Calendar Day','menubar=0,resizable=1,width=500,height=450')"
+            >
+                    <div class="ec" style="background-color: ${calEvent.Color}">&nbsp;</div>
+                    <div class="bg" style="background-color: ${calEvent.Color}">&nbsp;</div>
+                        <span class="eventtitle">${Text.Fold(calEvent.Description,18)}</span>
+                    <div class="ec" style="background-color: ${calEvent.Color}">&nbsp;</div>
+            </div>
+            <?brail
+                i++
+             end 
+             :afterloop
+             output "<div style=\"float:right;\"><img src=\"${siteRoot}/Content/icons/arrow_redo.png\"/></div>" if i>5
+             ?>
+            </td>
+            <?brail
+            output "</tr>" if day.IsWeekEnd
+             end ?>
+            <?brail end ?>
+    
+            </tbody>
+          </table>
+        </div>
+        <table>
+        <tr>
+            <td><div style="background-color: Green;color:White; width:120px">Templates</div></td>
+            <td><div style="background-color: Red;color:White; width:120px">Installation</div></td>
+            <td><div style="background-color: Yellow; width:120px">Service</div></td>
+        </tr>
+        </table>
+    </div>
+  </div>
+</div>
+  

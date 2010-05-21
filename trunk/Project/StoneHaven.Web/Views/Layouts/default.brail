@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Admin - SHGW</title>
+	
+    <link rel="stylesheet" type="text/css" media="all" href="${siteroot}/Content/css/style.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="${siteroot}/Content/css/cmxform.css" />
+	<link rel="Stylesheet" type="text/css" href="${siteroot}/Content/css/smoothness/jquery-ui-1.7.1.custom.css"  />	
+	<!--[if IE 7]><link rel="stylesheet" href="${siteroot}/Content/css/ie.css" type="text/css" media="screen, projection" /><![endif]-->
+	<!--[if IE 6]><link rel="stylesheet" href="${siteroot}/Content/css/ie6.css" type="text/css" media="screen, projection" /><![endif]-->
+	<link rel="stylesheet" type="text/css" href="${siteroot}/Content/js/flexigrid/css/flexigrid/flexigrid.css" media="screen">
+	<!--[if IE]>
+		<style type="text/css">
+		  .clearfix {
+		    zoom: 1;     /* triggers hasLayout */
+		    display: block;     /* resets display for IE/Win */
+		    }  /* Only IE can see inside the conditional comment
+		    and read this CSS rule. Don't ever use a normal HTML
+		    comment inside the CC or it will close prematurely. */
+		</style>
+	<![endif]-->
+	<!-- JavaScript -->
+    <script type="text/javascript" src="${siteroot}/Content/js/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="${siteroot}/Content/js/jquery-ui-1.7.1.custom.min.js"></script>
+	<script type="text/javascript" src="${siteroot}/Content/js/flexigrid/flexigrid.js"></script>
+	<script type="text/javascript" src="${siteroot}/Content/js/jquery-validate/jquery.validate.js"></script>
+	<script type="text/javascript" src="${siteroot}/Content/js/jquery.numeric.pack.js"></script>
+	<script type="text/javascript" src="${siteroot}/Content/js/jquery.blockUI.js"></script>
+	<script type="text/javascript" src="${siteroot}/Content/js/appScripts.js"></script>
+	<script type="text/javascript" src="${siteroot}/Content/js/jquery.maskedinput-1.2.1.pack.js"></script>
+
+	 ${?script}
+</head>
+<body>
+<div class="container" id="container">
+    <div  id="header">
+    	<div id="profile_info">
+			<img src="${siteroot}/Content/img/avatar.jpg" id="avatar" alt="avatar" />
+			<p>Welcome <strong>${?currentUser}</strong></p>
+			<p><a href="${siteroot}/home/Logout.aspx">Log out?</a></p>
+			<p>Messages: ${?nrOfMessages}. <a href="#">Read?</a></p>
+		</div>
+		<div id="logo"><h1><a href="/">SHGW</a></h1></div>
+		
+    </div><!-- end header -->
+	    <div id="content" >
+	    <div id="top_menu" class="clearfix">
+	    	${?topMenu}
+			<a href="#" id="visit" class="right">Visit site</a>
+	    </div>
+		<div id="content_main" class="clearfix">
+			<div id="main_panel_container" class="left">
+			${?notification}
+
+            <div id="shortcuts" class="clearfix">
+				<ul>
+					<li class="first_li"><a href="${siteroot}/quotemanagement/index.aspx"><img src="${siteroot}/Content/img/quote.gif" alt="quotes" /><span>Quotes</span></a></li>
+					<li><a href="${siteroot}/jobmanagement/index.aspx"><img src="${siteroot}/Content/img/jobs.gif" alt="jobs" /><span>Jobs</span></a></li>
+					<li><a href="${siteroot}/CalendarManagement/index.aspx"><img src="${siteroot}/Content/img/calendar.png" alt="calendar" /><span>Calendar</span></a></li>
+					<li><a href="${siteroot}/ReportsManagement/index.aspx"><img src="${siteroot}/Content/img/statistic.jpg" alt="reports" /><span>Reports</span></a></li>
+					<li><a href="${siteroot}/SystemManagement/index.aspx"><img src="${siteroot}/Content/img/database.gif" alt="system management" /><span>System</span></a></li>
+					<li><a href="#"><img src="${siteroot}/Content/img/inventory.gif" alt="inventory" /><span>Inventory</span></a></li>					
+				</ul>
+			</div><!-- end #shortcuts -->
+
+			${?dashboard}			
+			</div>
+			${?sidebar}
+		</div><!-- end #content_main -->
+		${ChildOutput}
+	    </div><!-- end #content -->
+		   
+    <div  id="footer" class="clearfix">
+    	<p class="left">SHGW - Quote Management System</p>
+		<p class="right">© 2009 <a href="http://www.mirceasoftconsulting.ca">MirceaSoft Consulting</a></p>
+	</div><!-- end #footer -->
+</div><!-- end container -->
+
+</body>
+</html>

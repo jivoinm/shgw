@@ -1,0 +1,72 @@
+﻿<div id="search" title="Job Search">
+<form id="advancedForm"> 
+        <ol>
+            <li>
+                ${Form.LabelFor("filter.JobNr","Job #")}
+                ${Form.TextField("filter.JobNr")}
+            </li>
+            <li>
+                ${Form.LabelFor("filter.Status","Job Status")}
+                ${Form.Select("filter.Status",Form.EnumToPairs(jobStatuses),{@firstoption:"----",@firstoptionvalue:"",@text:"Second",@value:"First",@style:"width:250px"})}
+            </li>
+            <li>
+                ${Form.LabelFor("filter.CompanyId","Company")}
+                ${Form.Select("filter.CompanyId",companies,{@firstoption:"----",@text:"Name",@value:"Id",@style:"width:250px"})}
+            </li>
+            <li>
+                ${Form.LabelFor("filter.CustomerName","Customer Name")}
+                ${Form.TextField("filter.CustomerName")}
+            </li>
+            <li>
+                ${Form.LabelFor("filter.CustomerPhone","Customer Phone")}
+                ${Form.TextField("filter.CustomerPhone")}
+            </li>
+             <li>
+                ${Form.LabelFor("filter.ScheduledDate","Scheduled Date")}
+                ${Form.TextField("filter.ScheduledStartDate",{@style:"width:80px", @size:"10"})}&nbsp;-&nbsp;
+                ${Form.TextField("filter.ScheduledEndDate",{@style:"width:80px", @size:"10"})}
+                
+            </li>
+            
+        </ol>
+</form>            
+
+<script>
+$(function() {
+$("#filter_ScheduledStartDate,#filter_ScheduledEndDate").datepicker({});
+$("#ui-datepicker-div").addClass("promoteZ");
+
+function customRange(input) { 
+    return {minDate: (input.id == "filter_ScheduledDate_Start" ? $("#filter_ScheduledDate_Start").datepicker("getDate") : null), 
+        maxDate: (input.id == "filter_ScheduledDate_End" ? $("#filter_ScheduledDate_End").datepicker("getDate") : null)}; 
+} 
+function searchForm(){
+    var dt = $('#advancedForm').serializeArray();
+    
+    $("#gridTable").flexOptions({params: dt});
+    $('#gridTable').flexOptions({newp: 1}).flexReload();
+    return true;
+}
+
+$("#search").dialog({
+			bgiframe: true,
+			autoOpen: false,
+			height: 400,
+			modal: true,
+			buttons: {
+				'Search': function() {
+                    searchForm();
+				},
+				Cancel: function() {
+					$(this).dialog('close');
+				}
+			},
+		});
+});
+
+$('#btnSearch').click(function() {
+			$('#search').dialog('open');
+		})
+
+</script>
+</div>

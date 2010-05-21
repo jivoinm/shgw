@@ -1,0 +1,279 @@
+﻿<div style="width:750px">
+<h3>
+<img src="${siteRoot}/Content/img/shgw_logo.JPG" />
+</h3>
+<center>
+<small>
+<strong>A Division of 1071759 Ontario Ltd.
+791 South Service Road, Stoney Creek  Ontario, Canada L8E 5Z2<br/>
+Phone: (905) 643-9982  Fax: (905) 643-9776</br>
+Visit us at http://www.stonehavengranite.com
+
+</small>
+</center>
+<fieldset>
+<legend>Job Details</legend>
+<table width="100%">
+<tr>
+<td>
+<ol>
+<li>
+  <label>Job#</label>
+  <i><strong>${job.JobNr}</strong></i>
+</li>
+<li>
+  <label>Company</label>
+  <i><strong>${job.Quotation.Company.Name}</strong></i>
+</li>
+<li>
+  <label>Customer Name</label>
+  <i><strong>${job.Quotation.Customer.CustomerName}</strong></i>
+</li>
+<li>
+  <label>Customer Name</label>
+  <i><strong>${job.Quotation.Customer.CustomerName}</strong></i>
+</li>
+<li>
+  <label>Site Address</label>
+  <i><strong>${job.Quotation.Customer.Address}</strong></i>
+</li>
+</ol>
+
+</td>
+<td>
+<ol>
+<li>
+  <label>Postal Code</label>
+  <i><strong>${job.Quotation.Customer.PostalCode}</strong></i>
+</li>
+<li>
+  <label>City</label>
+  <i><strong>${job.Quotation.Customer.City.Name}</strong></i>
+</li>
+<li>
+  <label>Home Phone</label>
+  <i><strong>${job.Quotation.Customer.Phone}</strong></i>
+</li>
+<li>
+  <label>Business Phone</label>
+  <i><strong>${job.Quotation.Customer.Fax}</strong></i>
+</li>
+
+</ol>
+</td>
+</tr>
+</table>
+</fieldset>
+
+<fieldset>
+<legend>Job Status</legend>
+  <ol>
+  <li>
+    ${Form.LabelFor("job.Status","Status")}
+    ${job.Status}
+  </li>
+  <li>
+    ${Form.LabelFor("job.TemplateDate","Template Date")}
+    <?brail 
+    output job.TemplateDate.ToString("f") if job.TemplateDate!=null
+    ?>
+    &nbsp;by&nbsp;
+    ${job.TemplateBy}
+  </li>  
+  <li>
+    ${Form.LabelFor("job.InstallationDate","Install Date")}
+    <?brail 
+    output job.InstallationDate.ToString("f") if job.InstallationDate!=null
+    ?>
+    &nbsp;by&nbsp;
+    ${job.InstallationBy}
+  </li>  
+    <li>
+    ${Form.LabelFor("job.ServiceDate","Service Date")}
+    <?brail 
+    output job.ServiceDate.ToString("f") if job.ServiceDate!=null
+    ?>
+    &nbsp;by&nbsp;
+    ${job.ServiceBy}
+  </li>  
+  </ol>
+</fieldset>
+<?brail if withPrice :?>
+    <fieldset>
+    <legend>Total</legend>
+    <table width="100%">
+        <tr>
+            <td>
+                <strong>Price</strong>
+            </td>
+            <td>
+                ${job.Quotation.Total.ToString("c")}
+            </td>
+            <td>
+                <strong>Tax</strong>
+            </td>
+            <td>
+            <?brail 
+                output job.Tax.ToString("c") if job.Tax!=null
+            ?>
+            </td>
+            <td>
+                <strong>Total:</strong>
+            </td>
+            <td>
+                <strong>${job.Total.ToString("c")}</strong>
+            </td>
+        </tr>
+    </table>
+    </fieldset>
+ 
+ <fieldset>
+   <legend>Deposits</legend>
+       <table width="100%">
+       <?brail 
+            for deposit in job.Deposits:?> 
+        <tr>
+            <td>
+                <strong>Amount</strong>
+            </td>
+            <td>
+           <?brail 
+                output deposit.Amount.ToString("c") if deposit.Amount!=null
+            ?>
+
+            </td>
+            <td>
+                <strong>Date</strong>
+            </td>
+            <td>
+            <?brail 
+                output deposit.PaidOn.ToShortDateString() if deposit.PaidOn!=null
+            ?>
+            </td>
+            <td>
+                <strong>By</strong>
+            </td>
+            <td>
+                ${deposit.PaidBy.ToString()}
+                <?brail 
+                   output deposit.PaidBy.ToString() if deposit.PaidBy!=null
+                   output "&nbsp;["+ deposit.Message +"]" if deposit.Message!=null
+                ?>
+            </td>
+            
+        </tr> 
+       <?brail end ?>
+    </table>
+    <hr>
+    <h1>Balance:&nbsp;<i>${job.Balance.ToString("c")}</i></h1><br/>
+
+   </fieldset>   
+ <?brail end ?>
+ 
+
+${Form.HiddenField("job.Quotation.Id")}
+<?brail 
+i as int 
+i=0 
+for quoteItem in job.Quotation.QuoteItems:?> 
+${Form.HiddenField("job.JobItems[${i}].Id")}
+<fieldset style="background-color:#c9c9c9">
+<legend>${quoteItem.Project.Name}</legend>
+<table width="100%" border=1>
+<tr>
+    <td valign=top>
+        <ol>
+        <li>
+            ${Form.LabelFor("job.JobItems[${i}].FinalColorGroup.Id","Color&nbsp;Group")}
+            <div><strong>${quoteItem.ColorGroup.Name}</strong>&nbsp;
+            <?brail 
+                output job.JobItems[i].FinalColorGroup.Name if job.JobItems[i].FinalColorGroup!=null
+            ?>
+            </div>
+        </li>
+        
+         <li>
+            ${Form.LabelFor("job.JobItems[${i}].SinkLocation","Sink&nbsp;Location")}
+            ${job.JobItems[i].SinkLocation}
+        </li>
+         <li>
+            ${Form.LabelFor("job.JobItems[${i}].SlabLocation","Slab&nbsp;Location")}
+            ${job.JobItems[i].SlabLocation}
+        </li>
+        <li>
+            ${Form.LabelFor("job.JobItems[${i}].Thicknes","Thicknes")}
+            ${job.JobItems[i].Thicknes}
+        </li>
+        
+        <li>
+            ${Form.LabelFor("job.JobItems[${i}].FinalEdge.Id","Edge")}
+            <div>${quoteItem.Edge.Name}&nbsp;${job.JobItems[i].FinalEdge.Name}</div>
+        </li>
+        <li>
+            ${Form.LabelFor("job.JobItems[${i}].Backsplash","Backsplash")}
+            ${job.JobItems[i].Backsplash}
+        </li>
+        <li>
+            ${Form.LabelFor("job.JobItems[${i}].TagNr","Tag#")}
+            ${job.JobItems[i].TagNr}
+            </li>
+            <li>
+            ${Form.LabelFor("job.JobItems[${i}].NrOfSlabs","# of Slabs")}
+            ${job.JobItems[i].NrOfSlabs}
+            </li>        
+        </ol>
+    </td>
+    <td valign=top>
+        <ol>
+          
+            <?brail
+            if quoteItem.Stove!=null :?>
+            <li>
+                ${Form.LabelFor("Stove","Stove")}
+                ${quoteItem.Stove.Name}
+            </li>
+            <?brail end?>
+            
+            <?brail if job.Quotation.QuoteItems[i].Sink!=null:?>
+            <li>
+            ${Form.LabelFor("job.Quotation.QuoteItems[${i}].Sink.Name","Sink")}
+            <?brail 
+                output job.Quotation.QuoteItems[i].Sink.Name if job.Quotation.QuoteItems[i].Sink!=null
+            ?>
+            
+            </li>
+             <li>
+            ${Form.LabelFor("job.JobItems[${i}].SinkType","Sink Type")}
+            ${job.JobItems[i].SinkType}
+            </li>
+            <li>
+            ${Form.LabelFor("job.Quotation.QuoteItems[${i}].NumberOfSinks","# Sinks")}
+            ${job.Quotation.QuoteItems[i].NumberOfSinks}
+            </li>
+                   
+            <?brail end?>
+        </ol>    
+    </td>
+</tr>
+</table></fieldset>
+<?brail 
+i++ 
+end?>
+
+Date: <?brail output job.CreateDate.ToShortDateString() if job.CreateDate!=null      ?>
+<br />
+<br />
+
+<table width="100%">
+<tr>
+<td>
+__________________________________<br />
+Client Signature
+</td>
+<td class="right">
+__________________________________<br />
+Sales Rep. Signature
+</td>
+</tr>
+</table>
+</div>

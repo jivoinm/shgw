@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="StoneHaven.Models.BackSplashMeasurement" Collapsed="true">
+    <Position X="15.25" Y="5.75" Width="1.5" />
+    <InheritanceLine Type="StoneHaven.Models.Measurement" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="18.75" Y="5.009" />
+        <Point X="18.75" Y="5.384" />
+        <Point X="16" Y="5.384" />
+        <Point X="16" Y="5.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BackSplashMeasurement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.ColorGroup" Collapsed="true">
+    <Position X="6.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAQAAAAQAEAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ColorGroup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.ColorGroupPrice" Collapsed="true">
+    <Position X="5.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ColorGroupPrice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.Company" Collapsed="true">
+    <Position X="19.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Company.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.CounterMeasurement" Collapsed="true">
+    <Position X="20.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CounterMeasurement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.Customer" Collapsed="true">
+    <Position X="22" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAACAAAAAAAAAQAgAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Customer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.Edge" Collapsed="true">
+    <Position X="15.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAQAAAAQAEAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Edge.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.EdgeMeasurement" Collapsed="true">
+    <Position X="18" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>EdgeMeasurement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.EdgePrice" Collapsed="true">
+    <Position X="3.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EdgePrice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.Identifier&lt;T&gt;" Collapsed="true">
+    <Position X="11.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Identifier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.Identifier" Collapsed="true">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Identifier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.Measurement" Collapsed="true">
+    <Position X="18" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAEBAABAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Measurement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.PriceBase&lt;T&gt;" Collapsed="true">
+    <Position X="7.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAADAAAAAQAAAAAAAAAACAAAAAgAAAAAAAAABAAAAAQ=</HashCode>
+      <FileName>PriceBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.Project" Collapsed="true">
+    <Position X="17.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEBAAAAAAAAAAAAAAIAAAQAAAAAAA=</HashCode>
+      <FileName>Project.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.ProjectPrice" Collapsed="true">
+    <Position X="6.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProjectPrice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.Bumpout" Collapsed="true">
+    <Position X="3.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProjectPrice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.Arche" Collapsed="true">
+    <Position X="5.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProjectPrice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.Supply" Collapsed="true">
+    <Position X="7.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProjectPrice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.SupplyAndInstall" Collapsed="true">
+    <Position X="10" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProjectPrice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.Quotation" Collapsed="true">
+    <Position X="24.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAAAAAAAAAAAACAAAAAgAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Quotation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.QuoteItem" Collapsed="true">
+    <Position X="4" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAABCAACAABAACCAAAACAAAAEAABBEAAAAQEAAAAAA=</HashCode>
+      <FileName>QuoteItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.Sink" Collapsed="true">
+    <Position X="8.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAQAAAAQAEAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Sink.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.SinkPrice" Collapsed="true">
+    <Position X="7.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SinkPrice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.Stove" Collapsed="true">
+    <Position X="10.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAQAAAAQAEAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Stove.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.StovePrice" Collapsed="true">
+    <Position X="10" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Stove.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.Thicknes" Collapsed="true">
+    <Position X="13" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAQAAAAQAEAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Thicknes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.ThicknesPrice" Collapsed="true">
+    <Position X="12.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ThicknesPrice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Query.QueryBuilder&lt;T&gt;" Collapsed="true">
+    <Position X="16.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QIAAASA0IAAICAQAgBoCEAAwBAAACJAJAAJAUIACC2A=</HashCode>
+      <FileName>QueryBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Query.IdQueryBuilder&lt;T&gt;" Collapsed="true">
+    <Position X="14" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAgAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>QueryBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Query.CollectionQueryBuilder&lt;T&gt;" Collapsed="true">
+    <Position X="16.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAEAAAA=</HashCode>
+      <FileName>QueryBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Query.PropertyQueryBuilder&lt;T&gt;" Collapsed="true">
+    <Position X="18.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAIBAAACABgAAACAEAgAAAAAACAABhQA=</HashCode>
+      <FileName>QueryBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Query.OrderByClause" Collapsed="true">
+    <Position X="24" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIIAAAEAAAAAAAAAAAAAEQAAAAAAAQAAIAAA=</HashCode>
+      <FileName>QueryBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Query.ProjectBy" Collapsed="true">
+    <Position X="25.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAEAEACAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>QueryBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Query.PropertyProjectionBuilder" Collapsed="true">
+    <Position X="21.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAJAAAAAAEAACAAQAAAQEABAAAABAAAAAAAA=</HashCode>
+      <FileName>QueryBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Query.NumericPropertyProjectionBuilder" Collapsed="true">
+    <Position X="21.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAIAAAAAQ=</HashCode>
+      <FileName>QueryBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Query.Where" Collapsed="true">
+    <Position X="24" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAABABCCAAAADAAEAFAAhAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Where.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Query.OrderBy" Collapsed="true">
+    <Position X="27.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Where.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Query.GroupBy" Collapsed="true">
+    <Position X="25.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Where.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoneHaven.Models.Services.DB.EntityServices" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Services\DB\EntityServices.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="StoneHaven.Models.Services.DB.QuoteServices" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="27.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAIAAAAAAAAgAAAABAAAA=</HashCode>
+      <FileName>Services\DB\QuoteServices.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="StoneHaven.Models.Services.IEntityServices" Collapsed="true">
+    <Position X="24" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Services\IEntityServices.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="StoneHaven.Models.Services.IQuoteServices" Collapsed="true">
+    <Position X="25.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAIAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Services\IQuoteServices.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="StoneHaven.Models.SupplyEnum" Collapsed="true">
+    <Position X="24" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Quotation.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

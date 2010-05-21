@@ -1,0 +1,346 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3BB26D34-0CC0-4B3F-8109-55D6FD68C3F2}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>StoneHaven.Web</RootNamespace>
+    <AssemblyName>StoneHaven.Web</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Boo.Lang.Compiler, Version=2.0.0.0, Culture=neutral, PublicKeyToken=32c39770e9a21a67, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Other\Boo.Lang.Compiler.dll</HintPath>
+    </Reference>
+    <Reference Include="Boo.Lang.Extensions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=32c39770e9a21a67, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Other\Boo.Lang.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Boo.Lang.Parser, Version=2.0.0.0, Culture=neutral, PublicKeyToken=32c39770e9a21a67, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Other\Boo.Lang.Parser.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.ActiveRecord, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.ActiveRecord.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Components.Binder, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Components.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Components.Common.EmailSender, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Components.Common.EmailSender.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Components.Common.TemplateEngine, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Components.Common.TemplateEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Components.Common.TemplateEngine.NVelocityTemplateEngine, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Components.Common.TemplateEngine.NVelocityTemplateEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Components.DictionaryAdapter, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Components.DictionaryAdapter.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Components.Pagination, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Components.Pagination.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Components.Scheduler, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Components.Scheduler.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Components.Scheduler.WindsorExtension, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Components.Scheduler.WindsorExtension.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Components.Validator, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Components.Validator.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.DynamicProxy, Version=1.1.5.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.DynamicProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.DynamicProxy2, Version=2.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.DynamicProxy2.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Facilities.ActiveRecordIntegration, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Facilities.ActiveRecordIntegration.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Facilities.AutomaticTransactionManagement, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Facilities.AutomaticTransactionManagement.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Facilities.BatchRegistration, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Facilities.BatchRegistration.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Facilities.Cache, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Facilities.Cache.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Facilities.Logging, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Facilities.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Facilities.NHibernateIntegration, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Facilities.NHibernateIntegration.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Facilities.Synchronize, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Facilities.Synchronize.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.MicroKernel, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.MicroKernel.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.MonoRail.ActiveRecordSupport, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.MonoRail.ActiveRecordSupport.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.MonoRail.Framework, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.MonoRail.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.MonoRail.TransformFilters, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.MonoRail.TransformFilters.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.MonoRail.Views.Brail, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.MonoRail.Views.Brail.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.MonoRail.WindsorExtension, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.MonoRail.WindsorExtension.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Services.Logging.Log4netIntegration, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Services.Logging.Log4netIntegration.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Services.Transaction, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Services.Transaction.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Castle\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Other\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=5.2.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Other\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=1.3.2.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Other\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=2.1.0.1001, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Other\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Commons, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Rhino\Rhino.Commons.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Commons.ActiveRecord, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Rhino\Rhino.Commons.ActiveRecord.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Commons.Binsor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Rhino\Rhino.Commons.Binsor.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Commons.Clr, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Rhino\Rhino.Commons.Clr.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Commons.NHibernate, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Rhino\Rhino.Commons.NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.DSL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\Rhino\Rhino.DSL.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\BaseSecuredController.cs" />
+    <Compile Include="Controllers\CalendarController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobManagementController.cs" />
+    <Compile Include="Controllers\QuoteManagementController.cs" />
+    <Compile Include="Controllers\QuoteMeasurementsController.cs" />
+    <Compile Include="Controllers\ReportsManager.cs" />
+    <Compile Include="Controllers\SystemManagementController.cs" />
+    <Compile Include="Forms\JSONPageResult.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\AppHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\js\appScripts.js" />
+    <Content Include="Content\js\jquery.maskedinput-1.2.1.pack.js" />
+    <Content Include="Default.htm" />
+    <None Include="Views\CalendarManagement\index.brail" />
+    <None Include="Views\CommonScripts\extensions.brail" />
+    <EmbeddedResource Include="Views\components\CalendarComponent\default.brail" />
+    <EmbeddedResource Include="Views\components\CalendarComponent\Copy of default.brail" />
+    <EmbeddedResource Include="Views\CalendarManagement\RenderCalendarDay.brail" />
+    <None Include="Views\Home\loginPage.brail" />
+    <None Include="Views\Home\index.brail" />
+    <None Include="Views\JobManagement\advancedSearch.brail" />
+    <None Include="Views\JobManagement\_payments.brail" />
+    <None Include="Views\JobManagement\search\_search.brail" />
+    <None Include="Views\JobManagement\index.brail" />
+    <None Include="Views\JobManagement\print\_form.brail" />
+    <None Include="Views\JobManagement\print\_notes.brail" />
+    <None Include="Views\JobManagement\print\_printPreview.brail" />
+    <None Include="Views\JobManagement\search\_jobSearchGrid.brail" />
+    <None Include="Views\JobManagement\_notes.brail" />
+    <None Include="Views\JobManagement\_deposits.brail" />
+    <None Include="Views\JobManagement\jobForm.brail" />
+    <None Include="Views\JobManagement\_form.brail" />
+    <None Include="Views\Layouts\print.brail" />
+    <None Include="Views\Layouts\simple.brail" />
+    <None Include="Views\QuoteManagement\_projectMeasurements.brail" />
+    <None Include="Views\QuoteManagement\_quoteInfo.brail" />
+    <None Include="Views\ReportsManagement\Report.brail" />
+    <None Include="Views\ReportsManagement\index.brail" />
+    <None Include="Views\SharedViews\messages.brail" />
+    <None Include="Views\SharedViews\menu.brail" />
+    <None Include="Views\Layouts\default.brail" />
+    <None Include="Views\QuoteManagement\print\_printPreview.brail" />
+    <None Include="Views\QuoteManagement\_form.brail" />
+    <None Include="Views\QuoteMeasurements\Copy of _measurementTotal.brail" />
+    <None Include="Views\QuoteMeasurements\_measurementTotal.brail" />
+    <None Include="Views\QuoteMeasurements\_edgeList.brail" />
+    <None Include="Views\QuoteMeasurements\_backsplashList.brail" />
+    <None Include="Views\QuoteMeasurements\_counterList.brail" />
+    <None Include="Views\QuoteManagement\_projectList.brail" />
+    <None Include="Views\QuoteManagement\quotationForm.brail" />
+    <None Include="Views\QuoteManagement\index.brail" />
+    <None Include="Views\rescues\error.brail" />
+    <None Include="Views\SystemManagement\company.brail" />
+    <None Include="Views\SystemManagement\_topMenu.brail" />
+    <None Include="Views\SystemManagement\Copy of _pricesSideMenu.brail" />
+    <None Include="Views\SystemManagement\Copy of _treeRender.brail" />
+    <None Include="Views\SystemManagement\_newPriceForm.brail" />
+    <None Include="Views\SystemManagement\prices.brail" />
+    <None Include="Views\SystemManagement\_userForm.brail" />
+    <None Include="Views\SystemManagement\user.brail" />
+    <None Include="Views\SystemManagement\_companyForm.brail" />
+    <None Include="Views\SystemManagement\_scripts.brail" />
+    <None Include="Views\SystemManagement\project.brail" />
+    <None Include="Views\SystemManagement\_projectForm.brail" />
+    <None Include="Views\SystemManagement\_project.brail" />
+    <None Include="Views\SystemManagement\_itemContent.brail" />
+    <None Include="Views\SystemManagement\_priceList.brail" />
+    <None Include="Views\SystemManagement\_pricesSideMenu.brail" />
+    <None Include="Views\SystemManagement\_treeRender.brail" />
+    <None Include="Views\SystemManagement\index.brail" />
+    <None Include="Windsor.boo" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Commons\Components\Components.csproj">
+      <Project>{54C0A834-C74C-47E5-8008-D6462D349E5E}</Project>
+      <Name>Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Commons\MSoftLibrary\MSoftLibrary.csproj">
+      <Project>{0ED0AF25-040E-4457-AD7D-617A23CE445F}</Project>
+      <Name>MSoftLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JQueryFormHelper\JQueryFormHelper.csproj">
+      <Project>{ABC37E61-4757-464B-9537-9A42BDFBCE30}</Project>
+      <Name>JQueryFormHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StoneHaven.Models\StoneHaven.Models.csproj">
+      <Project>{7C3D4082-0DCC-417D-B586-9F1F700AE202}</Project>
+      <Name>StoneHaven.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\css\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>56731</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

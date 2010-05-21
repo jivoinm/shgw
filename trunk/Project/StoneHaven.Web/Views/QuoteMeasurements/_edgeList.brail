@@ -1,0 +1,16 @@
+﻿<?brail component Flexgrid, {@Title:"Edge Measurements",@Url:"${Url.For({@controller:'QuoteMeasurements',@action:'ListEdgeMeasurements'})}",@Query:"[{name:'quoteId',value:'${qid}'},{name:'index',value:'${index}'}]",@Id:"gridTableEdgeMeasurements_${index}", @Width:"250"}:
+section Buttons:?>
+[
+{name: 'Add', bclass: 'add', onpress : function(){addNewMeasurement('#gridTableEdgeMeasurements_${index}',${qid},'/QuoteMeasurements/AddNewEdgeMeasurement.aspx',${index});}},
+{name: 'Save', bclass: 'save', onpress: function(){saveMeasurementsFor('#gridTableEdgeMeasurements_${index}',${qid},${index})}}
+]
+<?brail end section ColumnModel:
+?>
+[
+{display: 'L', name : 'Lenght', width : 60, sortable : false, align: 'left'},
+{display: 'L/12',  width : 60, sortable : true, align: 'left'}
+]
+<?brail 
+end 
+end?>    
+
