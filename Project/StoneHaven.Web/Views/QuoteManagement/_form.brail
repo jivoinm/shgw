@@ -1,0 +1,44 @@
+﻿<div class="section">
+  ${Form.FormTag({@action:"SaveQuote",@immediate:"false", @useTitles:"true", @class:"cmxform"})}
+  ${Form.HiddenField("quote.Id")}
+  ${Form.HiddenField("isUpdate",0)}
+  ${Form.HiddenField("quote.QuoteNr")}
+  ${Form.HiddenField("tab")}
+
+  <div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Info</a></li>
+		<?brail if quote.Id > 0: ?>
+		<li><a href="#tabs-2">Projects</a></li>
+		<?brail end?>
+	</ul>
+	<div id="tabs-1">
+	<?brail OutputSubView("/QuoteManagement/_quoteInfo") ?>
+    </div>
+    <?brail if quote.Id > 0: ?>
+    <div id="tabs-2">
+    <?brail OutputSubView("/QuoteManagement/_projectList") ?>
+    </div>
+    <?brail end?>
+</div>
+
+
+${Form.EndFormTag()}
+</div><!-- end #tabledata -->
+
+<script>
+   $("#quote_Company_Id").bind("change",function(e){
+        var companyId = $(this).val();
+        $.getJSON("GetCompanyInfo.aspx",{companyId:companyId},
+        function(data){
+          //if(data!=null){
+             $("#compAddress").html(data.Address!=null ? data.Address:"");
+             $("#compPhone").html(data.Phone!=null ? data.Phone : "");
+             $("#compFax").html(data.Fax!=null ? data.Fax : "");
+             $("#compEmail").html(data.Email!=null ? data.Email : "");
+          //}
+        });
+
+   });
+</script>
+

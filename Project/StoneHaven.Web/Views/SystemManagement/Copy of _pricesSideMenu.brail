@@ -1,0 +1,97 @@
+﻿<ul id="menu">
+<li>
+  <a href="index.aspx?itemTip=ColorGroup" class="ico_add">Add</a>
+  <ul>
+        <li><a href="javascript:void(0)" onclick="$('.treeview').hide();$('#colorGroup').show()">Color Groups</a></li>
+        <ul id="colorGroup" class="filetree treeview sidemenu" style="display:none">
+        <?brail OutputSubView("/SystemManagement/_treeRender",{@items:colorItems,@itemTip:'ColorGroup'})?>
+        </ul>
+  </ul>
+</li>
+</ul>
+<h1>
+  <a href="index.aspx?itemTip=Edge">
+    <img src="${siteRoot}/Content/icons/add.png" />
+  </a>
+  &nbsp;-&nbsp;
+  <a href="javascript:void(0)" onclick="$('.treeview').hide();$('#edge').show()">Edges</a>
+</h1>
+<ul id="edge" class="filetree treeview sidemenu" style="display:none">
+<?brail OutputSubView("/SystemManagement/_treeRender",{@items:edgeItems,@itemTip:'Edge'})?>
+</ul>
+<h1>
+  <a href="index.aspx?itemTip=Sink">
+    <img src="${siteRoot}/Content/icons/add.png" />
+  </a>
+  &nbsp;-&nbsp;
+  <a href="javascript:void(0)" onclick="$('.treeview').hide();$('#sink').show()">Sink</a>
+</h1>
+<ul id="sink" class="filetree treeview sidemenu" style="display:none">
+<?brail OutputSubView("/SystemManagement/_treeRender",{@items:sinkItems,@itemTip:'Sink'})?>
+</ul>
+<h1>
+  <a href="index.aspx?itemTip=Stove">
+    <img src="${siteRoot}/Content/icons/add.png" />
+  </a>
+  &nbsp;-&nbsp;
+  <a href="javascript:void(0)" onclick="$('.treeview').hide();$('#stove').show()">Stove</a>
+</h1>
+<ul id="stove" class="filetree treeview sidemenu" style="display:none">
+<?brail OutputSubView("/SystemManagement/_treeRender",{@items:stoveItems,@itemTip:'Stove'})?>
+</ul>
+<h1>
+  <a href="index.aspx?itemTip=Thicknes" >
+    <img src="${siteRoot}/Content/icons/add.png" />
+  </a>
+  &nbsp;-&nbsp;
+  <a href="javascript:void(0)" onclick="$('.treeview').hide();$('#thicknes').show()">Thicknes</a>
+</h1>
+<ul id="thicknes" class="filetree treeview sidemenu" style="display:none">
+<?brail OutputSubView("/SystemManagement/_treeRender",{@items:thicknesItems,@itemTip:'Thicknes'})?>
+</ul>
+<h1>
+  <a href="index.aspx?itemTip=Project">
+    <img src="${siteRoot}/Content/icons/add.png" />
+  </a>
+  &nbsp;-&nbsp;
+  <a href="javascript:void(0)" onclick="$('.treeview').hide();$('#projects').show()">Projects</a>
+</h1>
+<ul id="projects" class="filetree treeview sidemenu" style="display:none">
+<?brail OutputSubView("/SystemManagement/_treeRender",{@items:projectItems,@itemTip:'Project'})?>
+</ul>
+<h1>
+  <a href="index.aspx?itemTip=Company">
+    <img src="${siteRoot}/Content/icons/add.png" />
+  </a>
+  &nbsp;-&nbsp;
+  <a href="javascript:void(0)" onclick="$('.treeview').hide();$('#company').show()">Companies</a>
+</h1>
+<ul id="company" class="filetree treeview sidemenu" style="display:none">
+    <?brail 
+for item in companies :
+ output "<li><span class=\"file\"><a href=\"javascript:void(0);\" onclick=\"loadTreeView(${item.Id},'Company')\">${item.Name}</a></span></li>"
+end
+?>
+</ul>
+ <h1>
+ <a href="index.aspx?itemTip=Prices">
+    <img src="${siteRoot}/Content/icons/add.png" />&nbsp;-&nbsp;System Prices
+  </a>
+  
+</h1>
+
+ <h1>
+  <a href="index.aspx?itemTip=User">
+    <img src="${siteRoot}/Content/icons/add.png" />
+  </a>
+  &nbsp;-&nbsp;
+  <a href="javascript:void(0)" onclick="$('.treeview').hide();$('#users').show()">Users</a>
+</h1>
+<ul id="users" class="filetree treeview sidemenu" style="display:none">
+    <?brail 
+for item in users :
+ output "<li><span class=\"file\"><a href=\"javascript:void(0);\" onclick=\"loadTreeView(${item.Id},'Users')\">${item.Name}</a></span></li>"
+end
+?>
+</ul>
+</div>

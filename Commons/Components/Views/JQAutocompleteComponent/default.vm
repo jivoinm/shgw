@@ -1,0 +1,79 @@
+#if($isMultiSelect)
+$Form.TextField($targetAC,"%{class='$class'}")
+</li><li><label>&nbsp;</label>
+    $Form.Select("$targetACID",$!targetValue,"%{size='3',multiple='true',text='Name',value='Id'}") 
+    <a href="javascript:void(0)" onclick="jQuery('select[name=$targetACID] :selected').remove()">Remove</a>
+#else
+    ##$Form.TextFieldValue($targetAC,$!targetValue,"%{class='$class'}")
+    $Form.TextField($targetAC,$properties)
+    #if($sendSelectedId)
+        $Form.HiddenField($targetACID)
+    #end
+#end
+
+<script type="text/javascript">
+  
+ var autoComplete_$componentID = jQuery('#$SuiteHtmlHelper.GetHtmlId($targetAC)').autocomplete('$source',{
+    dataType: "json",
+    autoFill: true,
+    cacheLength: $cache,
+    mustMatch: $mustMatch,
+    matchContains: false,
+    selectFirst:true,
+    multipleSeparator:'|',
+    parse: function(data){ 
+         #if($onNoSelect)
+         if(data==null || data=='')
+             eval('$onNoSelect()');
+         #end
+        
+        return jQuery.map(data, function(row) { 
+            return { data: row, value: row.Name, result: row.Name};
+           })
+          },
+    formatItem: function(item){
+            return item!=null ? item.Name : '';
+            }
+    #if($dependsOn && $dependsOn!="")
+    , extraParams:{
+            dependsOn: function(){
+            var res = document.getElementsByName('$dependsOn');
+            var returnVal = res!=null&&res.length>0?res[0].value:'0';
+            return returnVal;
+            }
+        }
+    #end            
+ #if($sendSelectedId)
+    }).result(function(e,item){
+         jQuery('#$SuiteHtmlHelper.GetHtmlId($targetACID)').val(item.Id);
+         #if($onSelect)
+             eval('$onSelect('+item.Id+');');
+         #end
+    })
+    
+    jQuery('#$SuiteHtmlHelper.GetHtmlId($targetAC)').blur(function(){
+        autoComplete_${componentID}.search();
+       });
+ #else       
+    #if(!$isMultiSelect)
+      });   
+    #end 
+ #end
+ 
+ #if($isMultiSelect)
+    }).result(function(e,item){
+        #if($isMultiSelect)
+         var alreadyExist = false;
+         jQuery("[name='$targetACID'] > option").each(function(i,option){if(option.value==item.Id) alreadyExist = true;});
+         jQuery('#$SuiteHtmlHelper.GetHtmlId($targetAC)').val('');
+         if(alreadyExist) return;
+         jQuery('#$SuiteHtmlHelper.GetHtmlId($targetACID)').append("<option value='"+item.Id+"'>"+item.Name+"</option>");
+         #if($onSelect)
+            eval('$onSelect('+item.Id+')');
+         #end         
+        #end
+       });
+    jQuery("form").submit(function(){jQuery("select[name=$targetACID]>option").attr("selected","true")})
+ #end
+ 
+ </script>

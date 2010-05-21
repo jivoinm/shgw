@@ -1,0 +1,33 @@
+﻿<div id="financialDetails" style="display:none;">
+<fieldset>
+    <legend>Total</legend>
+    <table width="100%">
+        <tr>
+            <td>
+                <strong>Price</strong>
+            </td>
+            <td>
+                ${Form.TextField("job.Quotation.Total",{@style:'width:65px',@readonly:'true'})}
+                ${Form.HiddenField("job.Total",job.Quotation.Total)}
+            </td>
+            <td>
+                <strong>Tax</strong>
+            </td>
+            <td>
+                ${AppHelper.NumericField("job.Tax",{@style:'width:65px',@round:2})}
+            </td>
+            <td>
+                <strong>Total</strong>
+            </td>
+            <td>
+                <strong>${job.TotalPlusTax.ToString("c")}</strong>
+            </td>
+        </tr>
+    </table>
+   </fieldset>
+
+    <div id="deposits" >
+        <?brail OutputSubView("/JobManagement/_deposits",{@deposits:job.Deposits}) ?>
+    </div>
+</div>    
+

@@ -1,0 +1,42 @@
+﻿<style type="text/css">
+table.recept {
+	border-width: 1px 1px 1px 1px;
+	border-spacing: 2px;
+	border-style: outset outset outset outset;
+	border-color: gray gray gray gray;
+	border-collapse: separate;
+	background-color: white;
+}
+table.recept th {
+	border-width: thin thin thin thin;
+	padding: 1px 1px 1px 1px;
+	border-style: double double double double;
+	border-color: gray gray gray gray;
+	background-color: white;
+	-moz-border-radius: 0px 0px 0px 0px;
+}
+table.recept td {
+	border-width: thin thin thin thin;
+	padding: 1px 1px 1px 1px;
+	border-style: double double double double;
+	border-color: gray gray gray gray;
+	background-color: white;
+	-moz-border-radius: 0px 0px 0px 0px;
+}
+</style>
+<div id="tabledata" class="section">
+<table class="recept" width="100%">
+<tr>
+    <th>Name</th>
+    <th>Total</th>
+    <th>Percentage</th>
+</tr>
+<?brail for item in models :?>
+<tr>
+   <td>${item.Name}</td>
+   <th>$${item.Total}</th>
+   <th>${item.Perc}%</th>
+</tr>
+<?brail end ?>
+</table>
+</div>

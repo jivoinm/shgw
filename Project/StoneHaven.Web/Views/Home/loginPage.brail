@@ -1,0 +1,22 @@
+﻿${Form.FormTag({@action:"DoLogIn",@immediate:"true", @useTitles:"true"})}
+${Form.HiddenField("returnUrl")}
+ <div id="login" class="section">
+    <?brail OutputSubView("/SharedViews/messages") ?>
+	<label><strong>Username</strong></label>
+	 ${Form.TextField("username",{@class:"required"})}
+	<br />
+	<label><strong>Password</strong></label>
+	${Form.PasswordField("password",{@class:"required"})}
+	<br />
+	<strong>Remember Me</strong>
+	${Form.CheckboxField("remeberMe",{@class:"input noborder"})}
+	
+	<br />
+
+	<button id="save" class="loginbutton" type="submit" class="submit">Log In</button>
+	
+	</form>
+	
+	<a href="#" id="passwordrecoverylink">Forgot your username or password?</a>
+   </div>
+${Form.EndFormTag()}

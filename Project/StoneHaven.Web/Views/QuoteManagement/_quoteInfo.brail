@@ -1,0 +1,77 @@
+﻿<div id="tabledata" class="section">
+<h2 class="ico_mug">Quote Info</h2>
+<div id="messages"></div>
+<fieldset>
+        <div class="left">
+        <ol>
+        <li>
+          ${Form.LabelFor("quote.Company.Id","Company")}
+          ${Form.Select("quote.Company.Id",companies,{@text:"Name",@value:"Id",@firstoption:"--Select Company--",@firstoptionvalue:"0",@style:"width:250px",@class:"required"})}
+        </li>
+        <li>
+            ${Form.LabelFor("quote.CompanyAtt","ATT:")}
+            ${Form.TextField("quote.CompanyAtt",{@style:"width:250px"})}
+        </li>
+        </ol>
+        <ol style="background-color:#A8A8A8 #D8D8D8 #D8D8D8 #A8A8A8">
+        <li>
+            <label>Address</label>
+            <label id="compAddress"><?brail output quote.Company.Address if quote.Company!=null ?></label>
+        </li>
+        <li>
+            <label>Phone #</label>
+            <label id="compPhone"><?brail output quote.Company.Phone if quote.Company!=null ?></label>
+        </li>
+        <li>
+            <label>Fax #</label>
+            <label id="compFax"><?brail output quote.Company.Fax if quote.Company!=null ?></label>
+        </li>
+        <li>
+            <label>Email</label>
+            <label id="compEmail"><?brail output quote.Company.Email if quote.Company!=null ?></label>
+        </li>
+        </ol>
+        </div>
+        <div class="right">
+        <ol>
+        <li>
+          ${Form.HiddenField("quote.Customer.Id")}
+          ${Form.LabelFor("quote.Customer.CustomerName","Customer Name")}
+          ${Form.TextField("quote.Customer.CustomerName",{@style:"width:250px"})}
+        </li>
+        <li>
+          ${Form.LabelFor("quote.Customer.Address","Site Address")}
+          ${Form.TextField("quote.Customer.Address",{@style:"width:250px"})}
+        </li>
+        <li>
+          ${Form.LabelFor("quote.Customer.PostalCode","Postal Code")}
+          ${Form.TextField("quote.Customer.PostalCode",{@style:"width:60px"})}
+        </li>
+        <li>
+          ${Form.LabelFor("quote.Customer.City.Id","City")}
+           ${Form.Select("quote.Customer.City.Id",cities,{@text:"Name",@value:"Id",@style:"width:250px"})}
+           <a href="javascript:void(0)" onclick="adHockFieldAdd('AddNewCity.aspx','city.Name','City','quote_Customer_City_Id')"><img src="${siteRoot}/Content/img/Knob Add16.png"</a>
+        </li>
+        <li>
+          ${Form.LabelFor("quote.Customer.Phone","Phone")}
+          ${Form.TextField("quote.Customer.Phone",{@style:"width:105px"})}
+          &nbsp;Ext:&nbsp;${Form.TextField("quote.Customer.PhoneExt",{@style:"width:45px"})}
+        </li>
+        <li>
+          ${Form.LabelFor("quote.Customer.Fax","Fax")}
+          ${Form.TextField("quote.Customer.Fax",{@style:"width:105px"})}
+        </li>
+        </ol>
+    </div>
+</fieldset>
+<div class="right">
+${Form.Button("Save",{@onclick:"$('#isUpdate').val('1');saveQuote();",@class:"button"})}
+${Form.Button("Cancel",{@onclick:"document.location='index.aspx'",@class:"button"})}
+${Form.Button("Print",{@onclick:"showIframeDialog('${Url.For({@controller:'QuoteManagement',@action:'PrintPreview',@querystring:'quoteId='})}${quote.Id}','Print Preview',800,600)",@class:"button"})}
+
+<?brail if quote.Id>0 :?>
+ ${Form.Button("Create Job",{@onclick:"document.location='${Url.For({@controller:'JobManagement',@action:'CreateNewJobFromQuote',@querystring:'quoteId='})}${quote.Id}'",@class:"button"})}
+<?brail end?>
+</div>
+</div>
+

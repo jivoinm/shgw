@@ -1,0 +1,36 @@
+﻿   <fieldset style="background-color:#00FF7F">
+   <legend>Deposits</legend>
+    <div class="left"><a href="javascript:void(0)" onclick="addNewDeposit(${job.Id})"><img src="${siteRoot}/Content/img/Add.png" />Add New Deposit</a></div>
+    <div class="right"><strong>Invoice #</strong>&nbsp;${Form.TextField("job.InvoiceNr",{@style:'width:85px'})}</div>
+       <table width="100%">
+       <?brail 
+            i as int 
+            i=0 
+            for deposit in deposits:?> 
+        <tr>
+            <td>
+                <strong>Amount</strong>&nbsp;${Form.HiddenField("job.Deposits[${i}].Id")}
+                ${AppHelper.NumericField("job.Deposits[${i}].Amount",{@style:'width:65px',@round:2})}
+            </td>
+            <td>
+                <strong>Date</strong>&nbsp;${AppHelper.DateField("job.Deposits[${i}].PaidOn",{@style:'width:85px'})}
+            </td>
+            <td>
+               <strong>By</strong>&nbsp;${Form.Select("job.Deposits[${i}].PaidBy",FormHelper.EnumToPairs(paymentTypes),{@value:@First, @text:@Second})}
+            </td>
+            <td
+               <strong>Memo</strong>&nbsp;${Form.TextField("job.Deposits[${i}].Message",{@style:"width:255px"})}
+            </td>
+            <td>
+                <a href="javascript:void(0)" onclick="if(confirm('Delete this deposit?'))deleteDeposit(${job.Deposits[i].Id})" title="Delete">X</a>
+            </td>
+        </tr> 
+       <?brail 
+        i++
+       end ?>
+    </table>
+    <hr>
+    <h1>Balance:&nbsp;<i>${job.Balance.ToString("c")}</i></h1><br/>
+    
+   </fieldset>
+ 

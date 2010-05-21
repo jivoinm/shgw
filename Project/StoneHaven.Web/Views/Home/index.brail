@@ -1,0 +1,57 @@
+﻿<?brail component CaptureFor, {@Id: "dashboard"}: ?>            
+            <div id="dashboard">
+				<h2 class="ico_mug">Dashboard</h2>
+				<div class="clearfix">
+				<div class="quickview">
+					<h3>Scheduled Jobs</h3>
+					<table id="table" style="width:620px">
+			            <thead>
+			            <tr>
+				            <th>Date</th>
+				            <th>Client</th>
+				            <th>Place</th>
+				            <th>Who</th>
+			            </tr>
+			            </thead>
+			            <tbody>
+			            <tr>
+				            <td class="table_date">
+				            April 23, 2009<br>
+				            9:00AM - 10:00AM
+				            </td>
+				            <td class="table_title"><a href="#">Something like post </a></td>
+				            <td><a href="#">Webdesign, Life, Custom</a></td>
+				            <td class="table_title">Mircea Jivoin</td>
+				            
+			            </tr>
+            			
+			            </tbody>
+		            </table>
+				</div>
+								
+				</div>
+			</div><!-- end #dashboard -->
+<?brail end ?>
+
+<?brail component CaptureFor, {@Id: "sidebar"}: ?>            			
+			<div id="sidebar" class="right">
+				<h2 class="ico_mug">Shortcuts</h2>
+			<ul id="menu">
+				<li>
+					<a href="#" class="ico_posts">Quotes</a>
+					<ul>
+						<li><a href="#">Edit quote</a></li>
+						<li><a href="#">Add new quote</a></li>
+						<li><a href="#">Manage quotes</a></li>
+					</ul>
+					<a href="#" class="ico_page">Jobs</a>
+					<ul>
+						<li><a href="#">Edit job</a></li>
+						<li><a href="#">Add job</a></li>
+						<li><a href="#">Manage job</a></li>
+					</ul>
+				</li>
+			</ul>
+
+			</div><!-- end #sidebar -->
+<?brail end?>			

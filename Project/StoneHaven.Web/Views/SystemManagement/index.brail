@@ -1,0 +1,14 @@
+﻿
+<?brail OutputSubView("/SystemManagement/_scripts")?>
+
+<div id="tabledata" class="section">
+	<div class="clearfix">
+	<div class="left">
+        <?brail OutputSubView("/SystemManagement/_itemContent") if ?item ?>
+    </div>
+    <div class="right">
+        <?brail OutputSubView("/SystemManagement/_pricesSideMenu") if ?item ?>
+    </div>
+  </div>
+
+

@@ -1,0 +1,29 @@
+﻿<div id="tabledata" class="section">
+<h1>
+Reports, select Report Type enter date range and click on Generate Report button.
+</h1>
+
+${Form.FormTag({@id:@form1})}
+        <ol>
+            <li>
+                ${Form.LabelFor("ReportType","Report Type")}
+                ${Form.Select("ReportType",Form.EnumToPairs(reportTypes), { @value: @first, @text: @second ,@style:"width:300px"} )}
+            </li>
+            <li>
+                ${Form.LabelFor("From","Between")}
+                ${Form.TextField("start",{@style:"width:80px", @size:"10"})}&nbsp;and&nbsp;
+                ${Form.TextField("end",{@style:"width:80px", @size:"10"})}
+            </li>
+            
+        </ol>
+  <div style="vertical-align:middle;border-top-style:solid;border-top-width:1px" align='center'>
+  ${Form.Button("Generate Report",{@onClick:"AjaxUpdateCallWithFormSubmit('DoReport.aspx','report','form1')"})}&nbsp;
+  </div>
+${Form.EndFormTag()}
+<script type="text/javascript">
+$("#start,#end").datepicker();
+</script>
+
+
+<div id="report"></div>
+</div>

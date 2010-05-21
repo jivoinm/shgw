@@ -1,0 +1,40 @@
+﻿
+${Form.FormTag({@id:@priceForm})}
+${Form.HiddenField("type",priceFor)}
+<div style="width:350px">
+<div class="solid-green" style="display:none;"><strong><div id="message"></div></strong></div>
+<fieldset>
+<ol>
+<li>
+   ${Form.LabelFor("price.Company","Company")}
+   ${Form.HiddenField("price.Company.Id",company.Id)}
+   ${Form.LabelFor("price.Company",company.Name)}
+</li>
+<li>
+   ${Form.LabelFor("price.Project","Project")}
+   ${Form.HiddenField("price.Project.Id",project.Id)}
+   ${Form.LabelFor("price.Project",project.Name)}
+</li>
+<li>
+   ${Form.LabelFor("price.PriceFor","Price For")}
+   ${Form.Select("entityId",entityList,{@text:@Name,@value:@Id})}
+</li>
+<li>
+   ${Form.LabelFor("price.Price","Price / sqFt")}
+   ${Form.TextField("price.Price",{@class:@required})}
+</li>
+
+<?brail if priceFor=="ColorGroup":?>
+<li>
+   ${Form.LabelFor("price.SupplyPrice","Supply Price")}
+   ${Form.TextField("price.SupplyPrice")}
+</li>
+<li>
+   ${Form.LabelFor("price.SupplyAndInstallPrice","Supply And Price")}
+   ${Form.TextField("price.SupplyAndInstallPrice")}
+</li>
+<?brail end ?>
+</ol>
+</fieldset>
+${Form.EndFormTag()}
+</div>

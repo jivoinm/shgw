@@ -1,0 +1,22 @@
+﻿
+<?brail component CaptureFor, {@Id: "sidebar"}: ?>            			
+	<div id="sidebar" class="right">
+		<h2 class="ico_mug">Shortcuts</h2>
+	<ul id="menu">
+		<li>
+            <a href="#" id="btnSearch" class="ico_search">Search</a>
+		</li>
+	</ul>
+
+	</div><!-- end #sidebar -->
+<?brail end?>
+
+<div id="tabledata" class="section">
+	<h2 class="ico_mug">List of Jobs</h2>
+	<div class="clearfix">
+	    <div>
+            <?brail OutputSubView("/jobManagement/search/_jobSearchGrid") ?>
+	    </div>		
+	</div>
+</div><!-- end #tabledata -->
+<?brail OutputSubView("/jobManagement/search/_search") ?>

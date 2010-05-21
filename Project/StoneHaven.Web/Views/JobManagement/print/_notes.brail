@@ -1,0 +1,25 @@
+﻿<fieldset>
+<legend>Notes</legend>
+<br>
+<?brail
+index as int
+index=0
+ for note in job.JobNotes:?>
+<?brail component Baloon:
+section Content:?>
+${Form.HiddenField("job.JobNotes[${index}].Id")}
+${Form.HiddenField("job.JobNotes[${index}].Name")}
+${Form.HiddenField("job.JobNotes[${index}].Description")}
+${Form.HiddenField("job.JobNotes[${index}].Date")}
+<p>
+    ${note.Name}&nbsp;-&nbsp ${note.Date}
+    <br>
+    ${note.Description}
+</p>
+<?brail 
+index++
+end end?>
+<?brail end?>
+
+</fieldset>
+

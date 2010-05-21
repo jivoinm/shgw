@@ -1,0 +1,72 @@
+<?xml version="1.0" ?>
+<project name="shgw" default="deploy" xmlns="http://nant.sf.net/schemas/nant.xsd">
+	<property name="build.dir" value="Build" />
+  <property name="unitTestLibraryName" value="DFRS.Tests.Unit.dll" />
+  <property name="functionalTestLibraryName" value="DFRS.Tests.Functional.dll" />
+  <property name="toolsDirectory" value="tools" />
+  <property name="test.dir" value="${build.dir}/UnitTests"/>
+  <property name="testReports" value="..\test-reports" />
+	<!-- User targets -->
+	<target name="clean" description="Delete Automated Build artifacts">
+    <delete>
+      <fileset>
+        <include name="${build.dir}\bin\**\*.dll" />
+        <include name="${build.dir}\Content\css\*.*" />
+	      <include name="${build.dir}\Content\Calendar\*.*" />
+        <include name="${build.dir}\Content\img\*.*" />
+        <include name="${build.dir}\Content\icons\*.*" />
+        <include name="${build.dir}\Content\js\*.*" />
+        <include name="${build.dir}\Views\**\*.*" />
+        <include name="${build.dir}\*.*" />
+      </fileset>
+    </delete>
+	</target>
+	<!--
+	<target name="compile" description="Compiles using the AutomatedDebug Configuration">
+		<solution solutionfile="src\DFRS.sln" configuration="AutomatedDebug" />
+	</target>
+	-->
+	
+	<target name="compile">
+	 <loadtasks assembly="../../tools/nant/tasks/net/NAnt.Contrib.Tasks.dll" />
+
+	<echo message="Build Directory is ${build.dir}" />
+       <msbuild project="StoneHaven.sln">
+              <arg value="/property:Configuration=debug" />                                  
+              <arg value="/t:Rebuild" />
+       </msbuild>
+	</target>
+	
+  <target name="dist">
+		<zip zipfile="${build.dir}\230443_DFRS.zip">
+			<fileset basedir="${build.dir}\dist">
+				<include name="**\*" />
+			</fileset>
+		</zip>
+	</target>
+
+  <target name="deploy" descripton="Compiles the project and deploy" depends="clean">
+    <copy todir="Build">
+      <fileset basedir="StoneHaven.Web">
+        <include name="Content\css\**\*.*" />
+	      <include name="Content\Calendar\*.*" />
+        <include name="Content\img\**\*.*" />
+	      <include name="Content\icons\*.*" />
+        <include name="Content\js\**\*.*" />
+        <include name="Views\**\*.*" />
+        <include name="default.htm" />
+        <include name="Windsor.boo" />
+        <include name="Global.asax" />
+        <include name="Web.config" />
+      </fileset>
+    </copy>
+
+    <copy todir="Build\bin">
+      <fileset basedir="StoneHaven.Web\bin">
+        <include name="**\*.dll" />
+      </fileset>
+    </copy>
+  </target>  
+  	
+</project>
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<activerecord>
+
+  <config>
+    <add
+      key="connection.driver_class"
+      value="NHibernate.Driver.MySqlDataDriver" />
+    <add
+      key="dialect"
+      value="NHibernate.Dialect.MySQLDialect" />
+    <add
+      key="connection.provider"
+      value="NHibernate.Connection.DriverConnectionProvider" />
+    <add
+      key="connection.connection_string"
+      value="Database=shgw;Data Source=192.168.2.17;User Id=root;Password=sa" />
+  </config>
+
+</activerecord>

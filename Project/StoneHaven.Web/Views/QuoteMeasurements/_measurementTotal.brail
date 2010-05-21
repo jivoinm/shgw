@@ -1,0 +1,69 @@
+﻿<div>
+${AppHelper.FieldSet("Total")}
+<table cellpadding="10" cellspacing="10" style="width:100%">
+<tr><td>
+<ol>
+<li>
+    <label>SqFt&nbsp;(Countr + Backsplash)</label>
+    ${item.Total().TotalSqFt}
+</li>
+<li>
+    <label>LFt&nbsp;(edge)</label>
+    ${item.Total().SqFt_EdgeTotal}
+</li>
+</ol>
+</td><td>
+<strong>Price per SqFt</strong><hr/>
+<ol>
+<li>
+    <label>Color Group</label>
+    ${item.Total().SqFt_ColorgroupPrice.ToString("c")}
+</li>
+<li>
+    <label>Edge Price</label>
+    ${item.Total().SqFt_EdgePrice.ToString("c")}
+</li>
+</ol>
+</td><td>
+<strong>Price per unit</strong><hr/>
+<ol>
+<li>
+    <label>Stove Price</label>
+    ${item.Total().Total_Stove.ToString("c")}
+</li>
+<li>
+    <label>Sink Price</label>
+    ${item.Total().SinkPrice.ToString("c")}
+</li>
+<li>
+    <label>Bumpout Price</label>
+    ${item.Total().BumpoutPrice.ToString("c")}
+</li>
+<li>
+    <label>Supply/Supply and install</label>
+    ${item.Total().Total_SuplayAndInstall.ToString("c")}
+</li>
+</ol>  
+</td>
+</tr><tr>
+<td colspan=3>
+<hr />
+<ul>
+<li>
+    <label>Adjustments / Discounts</label>
+    ${AppHelper.NumericField("quote.QuoteItems[${index}].Adjustment",item.Adjustment,{@style:'width:65px',@round:2})}
+</li>
+<li>
+    <label>Total</label>
+    ${item.Total().Total.ToString("c")}
+</li>
+</ol>
+</td>
+</tr>
+</table>
+<div class="right">
+    <a href="javascript:void(0)" onclick="saveQuote()"><img src="${siteroot}/Content/img/accepted.png" alt="measurements" /><span>Confirm</span></a>
+    <a href="javascript:void(0)" onclick="closeMeasurements(${index})"><img src="${siteroot}/Content/img/back.png" alt="back" /><span>Return...</span></a>
+</div>    
+
+</div>

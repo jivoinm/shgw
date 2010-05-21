@@ -1,0 +1,1 @@
+@..\..\tools\NHQG\NHQG.exe /lang:cs "/files:C:\Projects\SHGW\Projects_new\SHGW\trunk\StoneHaven.Models\bin\Debug\StoneHaven.Models.dll" "/out:C:\Projects\SHGW\Projects_new\SHGW\trunk\StoneHaven.Models" /single 

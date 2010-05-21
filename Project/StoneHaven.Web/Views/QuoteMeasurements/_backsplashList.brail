@@ -1,0 +1,16 @@
+﻿<?brail component Flexgrid, {@Title:"Backsplash Measurements",@Url:"${Url.For({@controller:'QuoteMeasurements',@action:'ListBacksplashMeasurements'})}",@Query:"[{name:'quoteId',value:'${qid}'},{name:'index',value:'${index}'}]",@Id:"gridTableBSMeasurements_${index}", @Width:"250"}:
+section Buttons:?>
+[
+{name: 'Add', bclass: 'add', onpress : function(){addNewMeasurement('#gridTableBSMeasurements_${index}',${qid},'/QuoteMeasurements/AddNewBSMeasurement.aspx',${index});}},
+{name: 'Save', bclass: 'save', onpress: function(){saveMeasurementsFor('#gridTableBSMeasurements_${index}',${qid},${index})}}
+]
+<?brail end section ColumnModel:
+?>
+[
+{display: 'L', name : 'Lenght', width : 60, sortable : false, align: 'left'},
+{display: 'W', name : 'Width', width : 60, sortable : false, align: 'left'},
+{display: 'Total',  width : 60, sortable : true, align: 'left'}
+]
+<?brail 
+end 
+end?>
