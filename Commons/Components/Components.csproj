@@ -75,7 +75,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Project\StoneHaven.Models\StoneHaven.Models.csproj">
+    <ProjectReference Include="..\..\Project\StoneHaven.Models\StoneHaven.Models.csproj">
       <Project>{7C3D4082-0DCC-417D-B586-9F1F700AE202}</Project>
       <Name>StoneHaven.Models</Name>
     </ProjectReference>

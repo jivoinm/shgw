@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using Castle.ActiveRecord;
 using Castle.MonoRail.ActiveRecordSupport;
@@ -12,6 +13,7 @@ using StoneHaven.Models;
 using StoneHaven.Models.Filters;
 using StoneHaven.Models.Services;
 using StoneHaven.Web.Forms;
+using Winnovative.WnvHtmlConvert;
 
 namespace StoneHaven.Web.Controllers
 {
@@ -94,6 +96,7 @@ namespace StoneHaven.Web.Controllers
             PropertyBag["thickneses"] = IoC.Resolve<IEntityServices>().FindAll<Thicknes>(Where.Thicknes.Parent==null, OrderBy.ColorGroup.Name.Asc);
             PropertyBag["sinks"] = IoC.Resolve<IEntityServices>().FindAll<Sink>(Where.Sink.Parent==null, OrderBy.ColorGroup.Name.Asc);
             PropertyBag["stoves"] = IoC.Resolve<IEntityServices>().FindAll<Stove>(Where.Stove.Parent==null, OrderBy.ColorGroup.Name.Asc);
+            PropertyBag["webSite"] = string.Format("http://{0}:{1}",Request.Params["SERVER_NAME"], Request.Params["SERVER_PORT"]);
         }
 
 //        public void SaveQuote([DataBind("quote", Validate = true)]Quotation quotation)
@@ -227,6 +230,8 @@ namespace StoneHaven.Web.Controllers
         [Layout("print")]
         public void PrintPreview(int quoteId)
         {
+            //CancelLayout();
+            CancelView();
             QuoteSetup();
             if(quoteId>0)
             {
@@ -234,11 +239,34 @@ namespace StoneHaven.Web.Controllers
                 PropertyBag["quote"] = quote;
                 PropertyBag["dateNow"] = DateTime.Now.ToString("MMMM, dd, yyyy");
             }
+            byte[] pdf;
+            using (StringWriter sw = new StringWriter())
+            {
+                InPlaceRenderSharedView(sw, "QuoteManagement/print/_printPreview");
+                PdfConverter pdfc = new PdfConverter();
+                //pdfc.PageWidth = 11222;
+                pdfc.PdfDocumentOptions.AutoSizePdfPage = true;
+                pdfc.PdfDocumentOptions.PdfPageSize = PdfPageSize.Custom;
+                pdfc.PdfDocumentOptions.CustomPdfPageSize = new System.Drawing.SizeF(UnitsConverter.PixelsToPoints(1250), UnitsConverter.PixelsToPoints(1200));
+                pdfc.PdfDocumentOptions.PdfCompressionLevel = PdfCompressionLevel.Normal;
+                pdfc.PdfDocumentOptions.PdfPageOrientation = PDFPageOrientation.Landscape;
+                pdfc.PdfDocumentOptions.FitWidth = true;
+                pdfc.PdfDocumentOptions.LeftMargin = 40;
+                //pdfc.PdfDocumentOptions.SinglePage = true;
+                pdfc.PdfDocumentOptions.PdfCompressionLevel = PdfCompressionLevel.NoCompression;
+                //pdfc.PdfDocumentOptions.GenerateSelectablePdf = true;
+                
+                pdfc.LicenseKey = "IwgRAxIDERoDFw0TAxASDRIRDRoaGho=";
+                
+                pdf = pdfc.GetPdfBytesFromHtmlString(sw.ToString());
+            }
 
-            RenderView("print/_printPreview");
+
+            Response.ContentType = "application/pdf";
+            Response.BinaryWrite(pdf);
         }
 
-        
+       
         public void LoadProjectMeasurement(int quoteItemId,int index)
         {
             var item = Repository<QuoteItem>.Get(quoteItemId);

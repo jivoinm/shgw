@@ -76,11 +76,10 @@ end?>
 
 
  <div class="right">
-${Form.Button("Save",{@onclick:"$('#isUpdate').val('1');saveQuote();",@class:"button"})}
-${Form.Button("Cancel",{@onclick:"document.location='index.aspx'",@class:"button"})}
-${Form.Button("Print",{@onclick:"showIframeDialog('${Url.For({@controller:'QuoteManagement',@action:'PrintPreview',@querystring:'quoteId='})}${quote.Id}','Print Preview',800,600)",@class:"button"})}
-
-<?brail if quote.Id>0 :?>
+   ${Form.Button("Save",{@onclick:"$('#isUpdate').val('1');saveQuote();",@class:"button"})}
+   ${Form.Button("Cancel",{@onclick:"document.location='index.aspx'",@class:"button"})}
+   ${Form.Button("Print",{@onclick:"document.location='PrintPreview.aspx?quoteId=${quote.Id}'",@class:"button"})}
+   <?brail if quote.Id>0 :?>
  ${Form.Button("Create Job",{@onclick:"document.location='${Url.For({@controller:'JobManagement',@action:'CreateNewJobFromQuote',@querystring:'quoteId='})}${quote.Id}'",@class:"button"})}
 <?brail end?>
 </div>

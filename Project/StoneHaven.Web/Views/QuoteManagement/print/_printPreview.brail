@@ -1,51 +1,43 @@
 ﻿<style type="text/css">
-body
-{
-	font-size:14px;
-}
-table.recept {
-	border-width: 1px 1px 1px 1px;
-	border-spacing: 2px;
-	border-style: outset outset outset outset;
-	border-color: gray gray gray gray;
-	border-collapse: separate;
-	background-color: white;
-}
-table.recept th {
-	border-width: thin thin thin thin;
-	padding: 1px 1px 1px 1px;
-	border-style: double double double double;
-	border-color: gray gray gray gray;
-	background-color: white;
-	-moz-border-radius: 0px 0px 0px 0px;
-}
-table.recept td {
-	border-width: thin thin thin thin;
-	padding: 1px 1px 1px 1px;
-	border-style: double double double double;
-	border-color: gray gray gray gray;
-	background-color: white;
-	-moz-border-radius: 0px 0px 0px 0px;
-}
+  body
+  {
+  font-size:10px;
+  background:#FFFFFF;
+  }
+  table.recept {
+  border-width: 1px 1px 1px 1px;
+  border-spacing: 0px;
+  border-style: outset outset outset outset;
+  border-color: gray gray gray gray;
+  border-collapse: separate;
+  background-color: white;
+  }
+  table.recept th {
+  border-width: thin thin thin thin;
+  padding: 1px 1px 1px 1px;
+  border-style: double double double double;
+  border-color: gray gray gray gray;
+  background-color: white;
+  -moz-border-radius: 0px 0px 0px 0px;
+  }
+  table.recept td {
+  border-width: thin thin thin thin;
+  padding: 1px 1px 1px 1px;
+  border-style: double double double double;
+  border-color: gray gray gray gray;
+  background-color: white;
+  -moz-border-radius: 0px 0px 0px 0px;
+  }
 
-.priceGuarantee
-{
-	background:url(${siteRoot}/Content/img/best-price-garantie.jpg) no-repeat right top;
-	width:100%
-}
-
-
-@page port {size: portrait;}
-@page land {size: landscape;}
-
-.portrait {page: port;}
-
-.landscape {page: land;}
+  .priceGuarantee
+  {
+  background:url(${webSite}${siteRoot}/Content/img/best-price-garantie.jpg) no-repeat right top;
+  width:100%
+  }
 
 </style>
-
 <h3>
-<img src="${siteRoot}/Content/img/shgw_logo.JPG" />
+<img src="${webSite}${siteRoot}/Content/img/shgw_logo.JPG" />
 </h3>
 <hr/>
 <center>
@@ -254,6 +246,3 @@ output "</tr>"
 <h1><strong>Thank you, we appreciate your business</strong></h1>
 </div>
 <br/><br/><br/>
-<script type="text/javascript">
-$(document).ready(function(){window.print();});
-</script>
