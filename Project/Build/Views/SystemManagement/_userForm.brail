@@ -1,0 +1,37 @@
+﻿<?brail component CaptureFor, {@Id: "sidebar"}:
+  OutputSubView("/SystemManagement/_pricesSideMenu")    
+end?>
+
+${Form.FormTag({@immediate:"false", @useTitles:"true", @class:"cmxform"})}
+${Form.HiddenField("item.Id")}
+${Form.HiddenField("itemTip")}
+
+<p class="info" style="width:600px">Setup your Users in the system. Each user must have role.</p>
+
+${Form.Button("Update",{@onclick:"saveUser();"})}
+${Form.Button("Cancel",{@onclick:"document.location='index.aspx'"})}
+<?brail if item.Id>0 :?>
+${Form.Button("Delete",{@onclick:"if(confirm('This will permanently delete ${item.Name} from the system, proceed?'))document.location='delete.aspx?id=${item.Id}&itemTip=${itemTip}'"})}
+<?brail end ?>
+<fieldset>
+<legend>Details</legend>
+<ol>
+<li>
+   ${Form.LabelFor("item.Name","Full Name")}
+   ${Form.TextField("item.Name",{@style:"width:250px"})}
+</li>
+<li>
+   ${Form.LabelFor("item.UserName","User Name")}
+   ${Form.TextField("item.UserName",{@style:"width:250px"})}
+</li>
+<li>
+   ${Form.LabelFor("item.Password","Password")}
+   ${Form.PasswordField("item.Password")}
+</li>
+<li>
+   ${Form.LabelFor("item.Role.Id","Role")}
+   ${Form.Select("item.Role.Id",roles,{@text:"Name",@value:"Id",@style:"width:250px"})}
+</li>
+</ol>
+</fieldset>
+${Form.EndFormTag()}

@@ -1,2 +1,2 @@
-@..\..\tools\nant\NAnt.exe -buildfile:default.build
+@..\tools\nant\NAnt.exe -buildfile:default.build
 pause

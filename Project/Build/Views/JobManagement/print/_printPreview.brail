@@ -1,0 +1,16 @@
+﻿<div id="formPlace">
+<?brail OutputSubView("_form") ?>
+</div>
+<div id="notes">
+<br><br><br>
+
+<div id="notePlaceHolder">
+<?brail OutputSubView("_notes") ?>
+</div>
+</div>
+<!--</div>-->
+<script type="text/javascript">
+$(document).ready(function(){
+   window.print();
+});
+</script>

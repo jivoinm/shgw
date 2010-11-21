@@ -1,0 +1,22 @@
+﻿   <div id="project_${index}_Measurements">
+    <!-- Measurements -->
+    
+    <table style="width:860px" cellpadding="30" cellspacing="30"><tr><td>
+        <?brail OutputSubView("/QuoteMeasurements/_counterList",{@index:index,@qid:item.Id}) ?>
+       </td>
+       <td>
+        <?brail OutputSubView("/QuoteMeasurements/_backsplashList",{@index:index,@qid:item.Id}) ?>
+        </td>
+        <td>
+        <?brail OutputSubView("/QuoteMeasurements/_edgeList",{@index:index,@qid:item.Id}) ?>
+        </td>
+        </tr>
+        <td colspan=3>
+            <div id="project_${item.Id}_MeasurementsTotal">
+            <?brail OutputSubView("/QuoteMeasurements/_measurementTotal",{@index:index,@qid:item.Id}) ?>     
+            </div>
+        </td>
+        </tr>
+    </table>
+  
+  </div>

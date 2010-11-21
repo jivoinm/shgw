@@ -1,0 +1,12 @@
+﻿<?brail component Flexgrid, {@Url:"PriceSearch.aspx",@Id:"gridTable", @Width:"800",@Title:"List of existing Quotes",@Sortorder:"Company",@UseRemotePaging:true}:
+section ColumnModel:?>
+[
+{display: '', name : 'action', width : 40, sortable : false, align: 'center'},
+{display: 'Price/sqFt', name : 'Price', width : 80, sortable : true, align: 'center'},
+{display: 'Supply Price', name : 'SupplyPrice', width : 300, sortable : false, align: 'left'},
+{display: 'Supply And Install Price', name : 'SupplyAndInstallPrice', width : 300, sortable : false, align: 'left'}
+]
+<?brail 
+end 
+end?>
+<?brail end end?>

@@ -1,0 +1,180 @@
+﻿<?brail OutputSubView("/SharedViews/menu") ?>
+<?brail component CaptureFor, {@Id: "script"}: ?>
+<link href="${siteRoot}/content/themes/default/ui.all.css" rel="stylesheet" type="text/css" />
+<script language="javascript">
+function showMeasurements(id,index){
+$.blockUI(); 
+$.get('${Url.For({@action:'LoadProjectMeasurement'})}',{ quoteItemId: id,index: index},
+    function(data){
+        $('#quote_'+index+'_item').hide();
+        $('#quote_'+index+'_item_measurements').show();
+        $('#quote_'+index+'_item_measurements').html(data);
+    });
+
+}
+function closeMeasurements(index){
+   $('#quote_'+index+'_item').show();
+   $('#project_'+index+'_measurements').remove();
+   $('#quote_'+index+'_item_measurements').hide();
+}
+function showMeasurementsFor(dialogId){
+$(dialogId).dialog({ 
+    title:'Measurements',
+    autoOpen: false, 
+    bgiframe:true,
+    height: 900,
+    width: 800,
+    resizable:true,
+    modal:true,
+    position:'center',
+    overlay: { opacity: 0.5, background: "black"},
+    
+    buttons: { 
+        "Save": function(){
+            var values = $('[name*=quote]').serialize();
+             values = values + "&" + $('[name=colorGroupId]').serialize();
+            $.ajax({
+              url: '${Url.For({@controller:'QuoteMeasurements',@action:'SaveMeasurements'})}',
+              type:'POST',
+              cache: false,
+              data: values
+            });
+            $(this).dialog("close"); 
+            document.location=document.location;
+        },
+        "Close": function() { 
+            $(this).dialog("close"); 
+        } 
+    } 
+});
+$(dialogId).dialog('open'); 
+}
+
+function saveMeasurementsFor(formId,id,index){
+    var values = $('[name*=quote]').serialize();
+    values = values + '&index='+index+'&qid='+id;
+     values = values + "&" + $('[name=colorGroupId]').serialize();
+    $.ajax({
+      url: '${Url.For({@controller:'QuoteMeasurements',@action:'SaveMeasurements'})}',
+      type:'POST',
+      cache: false,
+      data: values,
+      dataType: 'html',
+      success: function(html){
+        $(formId).flexReload();
+        updateMeasurementTotal(id,index);
+      }
+    });
+}
+
+function saveQuote(){
+    $('#form1').validate();
+    
+    if($('#form1').valid()){
+        var values = $('[name*=quote]').serialize();
+        values = values + "&" + $('[name=colorGroupId]').serialize();
+        values = values + "&tab=" + $('#tab').val();
+        
+        $.ajax({
+          url: '${Url.For({@controller:'QuoteManagement',@action:'SaveQuote'})}',
+          type:'POST',
+          cache: false,
+          data: values,
+          dataType: 'json',
+           beforeSend: function(){
+             $.blockUI({ message: '<h1>Saving Quote. Just a moment...</h1>' }); 
+           },
+
+          success: function(resp){
+            if(isNaN(resp)) 
+                alert(resp.responseText);
+            else
+               var qstring = 'id='+resp+'&tab='+$('#tab').val()
+               document.location = '${Url.For({@controller:"QuoteManagement",@action:"EditQuote"})}?'+qstring;
+          },
+          error: function(resp){
+                alert(resp.responseText);
+          }
+        });
+    }
+}
+
+
+function updateMeasurementTotal(Id,index){
+    $.ajax({
+          url: '${Url.For({@controller:'QuoteMeasurements',@action:'GetQuoteItemTotal'})}',
+          type:'POST',
+          cache: false,
+          data: 'itemId='+Id+'&index='+index,
+          dataType: 'html',
+          success: function(html){
+            var totalId = '#project_'+Id+'_MeasurementsTotal';
+            $(totalId).html(html);
+            
+          }
+        });
+}
+
+function addNewMeasurement(gridId,quoteItem,url,index){
+  $.ajax({
+    url:url+'?quoteItem='+quoteItem+'&index='+index,
+     type:'GET',
+     cache: false,
+     dataType: 'html',
+     success:function(html){
+        $(gridId).flexReload();
+        
+        }
+  });
+}
+
+function addNewQuoteItem(quoteId){
+  $.blockUI();
+  $.ajax({
+    url: '${Url.For({@controller:'QuoteManagement',@action:'AddProjectToQuote'})}',
+     type:'GET',
+     cache: false,
+     dataType: 'html',
+     data:'quoteId='+quoteId,
+     success:function(html){
+        
+        $('#tabs-2').html(html);
+        }
+  });
+}
+
+$(document).ready(function(){
+$("[name='quote.Customer.Phone']").mask("(999) 999-9999");
+$("[name='quote.Customer.Fax']").mask("(999) 999-9999");
+
+$('#tabs').tabs({ selected: $("#tab").val() });
+$('#tabs').bind('tabsselect', function(event, ui) {
+     $("#tab").val(""+ui.index)
+ });
+
+
+//listen on customer only if new quote
+
+$("[name='quote.Customer.CustomerName'],[name='quote.Customer.Address'],[name='quote.Customer.PostalCode'],[name='quote.Customer.City.Id'],[name='quote.Customer.Phone']").bind("change",function(){
+    var values = $('[name*=quote.Customer]').serialize();
+    var url = '${Url.For({@controller:'QuoteManagement',@action:'CheckIfCustomerExist'})}';
+    $.getJSON(url, values, function(json){
+        if(json.exists!=null && json.exists){
+            $("#warning").remove();
+            $("#messages").append("<div id=\"warning\" class=\"info_div\"><span class=\"ico_error\">WARNING! This customer already have an existing quote.</span></div>");
+        }else{
+            $("#warning").remove();
+        }
+    });
+
+}
+)
+
+});
+</script>
+<?brail end ?>
+
+
+<div id="formPlace">
+<?brail OutputSubView("/QuoteManagement/_form") ?>
+</div>

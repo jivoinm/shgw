@@ -1,0 +1,89 @@
+﻿<div id="search" title="Quotations search">
+<form id="searchForm">
+         <ol>
+            <li>
+                ${Form.LabelFor("filter.QuoteNr","Quote #")}
+                ${Form.TextField("filter.QuoteNr")}
+            </li>
+            <li>
+                ${Form.LabelFor("filter.CustomerName","Customer Name")}
+                ${Form.TextField("filter.CustomerName")}
+            </li>
+            <li>
+                ${Form.LabelFor("filter.Company","Company")}
+                ${Form.Select("filter.Company",companies,{@firstoption:"----",@text:"Name",@value:"Id"})}
+            </li>
+            <li>
+                ${Form.LabelFor("filter.CustomerPhone","Phone #")}
+               ${Form.TextField("filter.CustomerPhone")}
+            </li>
+        </ol>
+</form>            
+
+<script>
+$(function() {
+$("[name='filter.CustomerPhone']").mask("(999) 999-9999");
+
+function searchForm(){
+    var dt = $('#searchForm').serializeArray();
+    
+    $("#gridTable").flexOptions({params: dt});
+    $('#gridTable').flexOptions({newp: 1}).flexReload();
+    return true;
+}
+
+$("#search").dialog({
+			bgiframe: true,
+			autoOpen: false,
+			height: 320,
+			modal: true,
+			buttons: {
+				'Search': function() {
+                    searchForm();
+                    $(this).dialog('close');
+				},
+				Cancel: function() {
+					$(this).dialog('close');
+				}
+			},
+		});
+});
+
+$('#btnSearch').click(function() {
+			$('#search').dialog('open');
+		})
+
+</script>
+</div>
+
+<?brail component CaptureFor, {@Id: "sidebar"}: ?>            			
+	<div id="sidebar" class="right">
+		<h2 class="ico_mug">Shortcuts</h2>
+	<ul id="menu">
+		<li>
+            <a href="#" id="btnSearch" class="ico_search">Search</a>
+		    <a href="${siteroot}/quotemanagement/addNew.aspx" class="ico_add">Add new quote</a>
+		</li>
+	</ul>
+
+	</div><!-- end #sidebar -->
+<?brail end?>
+
+<div id="tabledata" class="section">
+	<h2 class="ico_mug">List of Quotes</h2>
+	<div class="clearfix">
+	<div>
+	    <?brail component Flexgrid, {@Url:"List.aspx",@Id:"gridTable", @Width:"940",@Title:"List of existing Quotes",@Sortname:"QuoteNr",@Sortorder:"desc",@UseRemotePaging:true}:
+        section ColumnModel:?>
+        [
+        {display: '', name : 'action', width : 40, sortable : false, align: 'center'},
+        {display: 'Quote #', name : 'QuoteNr', width : 80, sortable : true, align: 'center'},
+        {display: 'Company', name : 'CompanyName', width : 300, sortable : false, align: 'left'},
+        {display: 'Customer', name : 'CustomerName', width : 300, sortable : false, align: 'left'}
+        ]
+        <?brail 
+        end 
+        end?>
+	</div>		
+	</div>
+</div><!-- end #tabledata -->

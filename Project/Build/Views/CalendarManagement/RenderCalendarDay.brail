@@ -1,0 +1,63 @@
+﻿<?brail component CaptureFor, {@Id: "script"}: ?>
+<link type="text/css" rel="stylesheet" href="${siteRoot}/content/Calendar/calendar_day.css">
+<?brail end ?>
+
+<div id="viewContainer1" class="view-container" style="overflow-y: auto;height:300px;width:95%">
+<table cellspacing="20" cellpadding="20" border="0" style="table-layout: fixed; width: 100%;">
+<tbody>
+<?brail for job in templates :?>              
+<tr>
+<td id="gridcontainercell" style="width: auto;" valign=top>
+<div id="grid" class="grid" style="height: 3ex;">
+    <div style="border-color: rgb(27, 136, 122); left: 0.213827%; width: 98.9309%; background-color: Green;" class="chip cbrd" id="reldiv42">
+         <dl style="height: 38px;"><dt style="background-color: rgb(27, 136, 122);">${job.TemplateDate.ToString("hh:mm tt")}<i class="cic cic-tmr"> </i></dt>
+            <dd>
+                <a target="_blank" href="${Url.For({@controller:@JobManagement,@action:@EditJob,@querystring:'jobId='})}${job.Id}">
+                    ${job.JobNr}&nbsp;${job.Quotation.Company.Name} - ${job.Quotation.Customer.CustomerName}
+                </a>
+            </dd>
+        </dl>
+   </div>
+</div>
+</td>
+</tr>
+<?brail end ?>              
+<?brail for job in installations :?>              
+<tr>
+<td id="gridcontainercell" style="width: auto;" valign=top>
+<div id="grid" class="grid" style="height: 3ex;">
+    <div style="border-color: rgb(27, 136, 122); left: 0.213827%; width: 98.9309%; background-color: Red;" class="chip cbrd" id="reldiv42">
+         <dl style="height: 38px;"><dt style="background-color: rgb(27, 136, 122);">${job.InstallationDate.ToString("hh:mm")}<i class="cic cic-tmr"> </i></dt>
+            <dd>
+                <a target="_blank" href="${Url.For({@controller:@JobManagement,@action:@EditJob,@querystring:'jobId='})}${job.Id}">
+                    ${job.JobNr}&nbsp;${job.Quotation.Company.Name} - ${job.Quotation.Customer.CustomerName}
+                </a>
+            </dd>
+        </dl>
+   </div>
+</div>
+</td>
+</tr>
+<?brail end ?>              
+<?brail for job in services :?>              
+<tr>
+<td id="gridcontainercell" style="width: auto;" valign=top>
+<div id="grid" class="grid" style="height: 3ex;">
+    <div style="border-color: rgb(27, 136, 122); left: 0.213827%; width: 98.9309%; background-color: Yellow;" class="chip cbrd" id="reldiv42">
+         <dl style="height: 38px;"><dt style="background-color: rgb(27, 136, 122);">${job.ServiceDate.ToString("hh:mm")}<i class="cic cic-tmr"> </i></dt>
+            <dd style="color:Black">
+                <a style="color:Black" target="_blank" href="${Url.For({@controller:@JobManagement,@action:@EditJob,@querystring:'jobId='})}${job.Id}">
+                    ${job.JobNr}&nbsp;${job.Quotation.Company.Name} - ${job.Quotation.Customer.CustomerName}
+                </a>
+                <br>
+                Customer Address: ${job.Quotation.Customer.Address}
+            </dd>
+        </dl>
+   </div>
+</div>
+</td>
+</tr>
+<?brail end ?>              
+</tbody>
+</table>
+</div>
