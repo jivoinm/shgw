@@ -52,5 +52,26 @@ namespace StoneHaven.Models
                 return total;
             }
         }
+
+        public string GetCompanyInfo()
+        {
+            return string.Format("Company:&nbsp;{0}<br/> Address:&nbsp;{1}<br/>ATT:{2}",Company.Name,Company.Address,CompanyAtt);
+        }
+
+        public string GetCompanyContactInfo()
+        {
+            return string.Format("Phone: {0}<br/> Fax: {1}<br/>Email:{2}", Company.Phone, Company.Fax,Company.Email);
+        }
+
+        public string GetCustomerInfo()
+        {
+            return string.Format("Customer:&nbsp;{0}<br/> Address:&nbsp;{1}", Customer.CustomerName, Customer.Address);
+        }
+
+        public string GetCustomerContactInfo()
+        {
+            return string.Format("Phone: {0}<br/> Fax: {1}", Customer.Phone + (!string.IsNullOrEmpty(Customer.PhoneExt) ? "(ext:" + Customer.PhoneExt + ")" : ""), Customer.Fax);
+        }
+
     }
 }

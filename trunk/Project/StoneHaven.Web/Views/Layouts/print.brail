@@ -16,9 +16,10 @@
 		<!--[if IE 7]><link rel="stylesheet" type="text/css" href="css/ie.css" media="screen" /><![endif]-->
 
 
-        <!-- Main stylesheet -->
+        <!-- Main stylesheet 
         <link rel="stylesheet" type="text/css" href="${webSite}${siteroot}/content/css/styles.css" media="screen">
         <link rel="stylesheet" type="text/css" href="${webSite}${siteroot}/content/css/theme-blue.css" media="screen">
+        -->
        <style type="text/css" media="print">
 
             @page port {size: portrait;}
