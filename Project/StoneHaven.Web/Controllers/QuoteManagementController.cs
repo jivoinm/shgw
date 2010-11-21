@@ -227,10 +227,10 @@ namespace StoneHaven.Web.Controllers
            RedirectToAction("index");
         }
 
-        [Layout("print")]
+        //[Layout("print")]
         public void PrintPreview(int quoteId)
         {
-            //CancelLayout();
+            CancelLayout();
             CancelView();
             QuoteSetup();
             if(quoteId>0)
