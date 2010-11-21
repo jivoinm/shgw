@@ -1,0 +1,72 @@
+﻿<ul class="sf-menu"> <!-- DROPDOWN MENU -->
+			<li class="current">
+				<a href="#a">Color Croups</a><!-- First level MENU -->
+				<ul>
+					<li>
+						<a href="index.aspx?itemTip=ColorGroup">Add New</a>
+					</li>
+					
+					<?brail OutputSubView("/SystemManagement/_treeRender",{@items:colorItems,@itemTip:'ColorGroup'})?>
+					
+				</ul>
+			</li>
+			<li>
+				<a href="#">Edges</a>
+				<ul>
+			        <li>
+				        <a href="index.aspx?itemTip=Edge">Add New</a>
+			        </li>	
+			        <?brail OutputSubView("/SystemManagement/_treeRender",{@items:edgeItems,@itemTip:'Edge'})?>
+				</ul>
+			</li>
+			<li>
+				<a href="#">Sinks</a>
+				<ul>
+			        <li>
+				        <a href="index.aspx?itemTip=Sink">Add New</a>
+			        </li>	
+			        <?brail OutputSubView("/SystemManagement/_treeRender",{@items:edgeItems,@itemTip:'Sink'})?>
+				</ul>
+			</li>
+			<li>
+				<a href="#">Stoves</a>
+				<ul>
+			        <li>
+				        <a href="index.aspx?itemTip=Stove">Add New</a>
+			        </li>	
+			        <?brail OutputSubView("/SystemManagement/_treeRender",{@items:edgeItems,@itemTip:'Stove'})?>
+				</ul>
+			</li>
+			<li>
+				<a href="#">Thicknes</a>
+				<ul>
+			        <li>
+				        <a href="index.aspx?itemTip=Thicknes">Add New</a>
+			        </li>	
+			        <?brail OutputSubView("/SystemManagement/_treeRender",{@items:edgeItems,@itemTip:'Thicknes'})?>
+				</ul>
+			</li>
+			<li>
+				<a href="#">Projects</a>
+				<ul>
+			        <li>
+				        <a href="index.aspx?itemTip=Project">Add New</a>
+			        </li>	
+			        <?brail OutputSubView("/SystemManagement/_treeRender",{@items:edgeItems,@itemTip:'Project'})?>
+				</ul>
+			</li>
+			<li>
+				<a href="#">Companies</a>
+				<ul>
+			        <li>
+				        <a href="index.aspx?itemTip=Project">Add New</a>
+			        </li>
+			        <ul>
+			            <?brail 
+                        for item in companies :
+                         output "<li><span class=\"file\"><a href=\"javascript:void(0);\" onclick=\"loadTreeView(${item.Id},'Company')\">${item.Name}</a></span></li>"
+                        end?>
+				</ul>
+			</li>
+			
+		</ul>

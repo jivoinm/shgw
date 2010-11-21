@@ -1,0 +1,245 @@
+﻿<style type="text/css">
+  body
+  {
+  font-size:14px;
+  background:#FFFFFF;
+  }
+  table.recept {
+  border-width: 1px 1px 1px 1px;
+  border-spacing: 0px;
+  border-style: outset outset outset outset;
+  border-color: gray gray gray gray;
+  border-collapse: separate;
+  background-color: white;
+  width:90%;
+  }
+  table.recept th {
+  border-width: thin thin thin thin;
+  padding: 1px 1px 1px 1px;
+  border-style: double double double double;
+  border-color: gray gray gray gray;
+  background-color: white;
+  -moz-border-radius: 0px 0px 0px 0px;
+  }
+  table.recept td {
+  border-width: thin thin thin thin;
+  padding: 1px 1px 1px 1px;
+  border-style: double double double double;
+  border-color: gray gray gray gray;
+  background-color: white;
+  -moz-border-radius: 0px 0px 0px 0px;
+  }
+
+  .priceGuarantee
+  {
+  background:url(${webSite}${siteRoot}/Content/img/best-price-garantie.jpg) no-repeat right top;
+  width:100%
+  }
+
+</style>
+<h3>
+<img src="${webSite}${siteRoot}/Content/img/shgw_logo.JPG" />
+</h3>
+<hr/>
+<center>
+<small>
+<strong>A Division of 1071759 Ontario Ltd.
+791 South Service Road, Stoney Creek  Ontario, Canada L8E 5Z2<br/>
+Phone: (905) 643-9982  Fax: (905) 643-9776</br>
+Visit us at http://www.stonehavengranite.com
+</small>
+</center>
+<br>
+<center><u><strong>QUOTATION #:${quote.QuoteNr}</strong></u></center>
+<br>
+<div class="left">
+Date: ${dateNow}
+</div>
+<div class="table_right">
+&nbsp;&nbsp;Quote By: ${quote.LastUpdatedBy}
+</div>
+<br>
+
+<fieldset>
+<legend>Quote Details</legend>
+<div class="left">
+<ol>
+<li>
+  ${Form.LabelFor("quote.Company.Id","Company")}
+  ${quote.Company.Name}
+</li>
+<li>
+    <label>ATT</label>
+    <label id="compAddress">${quote.CompanyAtt}</label>
+</li>
+<li>
+    <label>Address</label>
+    <label id="compAddress">${quote.Company.Address}</label>
+</li>
+<li>
+    <label>Phone #</label>
+    <label id="compPhone">${quote.Company.Phone}</label>
+</li>
+<li>
+    <label>Fax #</label>
+    <label id="compFax">${quote.Company.Fax}</label>
+</li>
+<li>
+    <label>Email</label>
+    <label id="compEmail">${quote.Company.Email}</label>
+</li>
+</div>
+<div class="right">
+<li>
+  ${Form.LabelFor("quote.Customer.CustomerName","Customer Name")}
+  ${quote.Customer.CustomerName}
+</li>
+<li>
+  ${Form.LabelFor("quote.Customer.Address","Address")}
+  ${quote.Customer}
+</li>
+<li>
+  ${Form.LabelFor("quote.Customer.Phone","Phone #")}
+  ${quote.Customer.Phone}&nbsp;Ext:&nbsp;${quote.Customer.PhoneExt}
+</li>
+<li>
+  ${Form.LabelFor("quote.Customer.Fax","Fax #")}
+  ${quote.Customer.Fax}
+</li>
+</ol>
+</div>
+</fieldset>
+
+<table class="recept" width="90%">
+<?brail for item in quote.QuoteItems :?>
+<tr>
+    <th colspan="2">Description</th>
+    <!--<th>SqFt</th>-->
+    <th>Price</th>
+    <th>Subtotal</th>
+</tr>
+<tr>
+    <td>Project</td>
+    <td>${item.Project.Name}</td>
+    <!--<td>&nbsp;</td>-->
+    <td>    
+	${item.Total().Total_SuplayAndInstall.ToString("c")}
+    </td>
+    <td>
+    <?brail output "Supply" if item.SupplyType==0 ?>
+    <?brail output "Supply And Install" if item.SupplyType==1 ?>
+    </td>
+</tr>
+<tr>
+    <td>Color Type</td>
+    <td>${item.ColorGroup.Name}</td>
+    <!--<td>${item.Total().SqFt_ColorgroupTotal}</td>-->
+    <td>&nbsp;<!--${item.Total().SqFt_ColorgroupPrice.ToString("c")}--></td>
+    <td>${item.Total().Total_Colorgroup.ToString("c")}</td>
+</tr>
+<tr>
+    <td>Edge</td>
+    <td>${item.Edge.Name}</td>
+    <!--<td>${item.Total().SqFt_EdgeTotal}</td>-->
+    <td>&nbsp;<!--${item.Total().SqFt_EdgePrice.ToString("c")}--></td>
+    <td>${item.Total().Total_Edge.ToString("c")}</td>
+</tr>
+<tr>
+    <td>Sink</td>
+    <td>${item.Sink.Name}</td>
+    <!--<td>&nbsp;</td>-->
+    <td>${item.Total().SinkPrice.ToString("c")} x ${item.Total().Total_NrOfSinks}</td>
+    <td>${item.Total().Total_Sink.ToString("c")}</td>
+</tr>
+<tr>
+    <td>Stove</td>
+    <td>${item.Stove.Name}</td>
+    <!--<td>&nbsp;</td>-->
+    <td>&nbsp;</td>
+    <td>${item.Total().Total_Stove.ToString("c")}</td>
+</tr>
+<tr>
+    <td>Bumpouts</td>
+    <td>&nbsp;</td>
+    <!--<td>&nbsp;</td>-->
+    <td>${item.Total().BumpoutPrice.ToString("c")} x ${item.Total().Total_NrOfBumpouts}</td>
+    <td>${item.Total().Total_Bumpouts.ToString("c")}</td>
+</tr>
+<tr>
+    <td>Backsplash</td>
+    <td>&nbsp;</td>
+    <!--<td>${item.Total().SqFt_BackSplashTotal}</td>-->
+    <td>&nbsp;<!--${item.Total().SqFt_ColorgroupPrice.ToString("c")}--></td>
+    <td>${item.Total().Total_Backsplash.ToString("c")}</td>
+</tr>
+<tr>
+<td colspan="3" align=right>Project Total</td>
+<td>
+<?brail total = item.Total().Total.ToString("c")
+output total
+?>
+</td>
+</tr>
+<tr>
+<td colspan="3" align=right>Adjustments / Discounts</td>
+<td>${item.Adjustment.ToString("c")}</td>
+</tr>
+<tr>
+<td colspan="4">
+<table class="recept">
+<caption><span><strong>Other Colors::Granite</strong></span></caption>
+<?brail 
+colorGranitePrices = item.ColorGroupPrices(0)
+output "<tr>"
+for colorPrice in colorGranitePrices :
+output "<th width=160px>${colorPrice.Key}</th>"
+end
+output "</tr><tr>"
+for colorPrice in colorGranitePrices :
+output "<td>${colorPrice.Value}</td>"
+end
+output "</tr>"    
+?>
+</table>
+<table class="recept">
+<caption><span><strong>Other Colors::Quartz</strong></span></caption>
+<?brail 
+colorGranitePrices = item.ColorGroupPrices(1)
+output "<tr>"
+for colorPrice in colorGranitePrices :
+output "<th width=160px>${colorPrice.Key}</th>"
+end
+output "</tr><tr>"
+for colorPrice in colorGranitePrices :
+output "<td>${colorPrice.Value}</td>"
+end
+output "</tr>"    
+?>
+</table>
+&nbsp;</td>
+</tr>
+<?brail end?>
+</table>
+<br>
+<br>
+<div>
+    <div class="left" style="border-bottom:1px solid">Total Quote:
+    &nbsp;&nbsp;
+    ${total}&nbsp;<small>+ applicable tax(es)</small><br/>
+    </div>
+</div>
+<div <?brail output "class=\"priceGuarantee\"" if quote.Company.Name.Contains("Privates")?>
+>
+<br/>
+<br/>
+<table>
+<tr>
+    <td rowspan=2><strong>The above prices are subject to HST</strong></td>
+</tr>
+</table>
+<h1>Prices are subject to change upon templating actual sizes. (price based on diagram provided)</h1>
+<h1>Due to the inherent nature of "NATURAL" stone, slabs may vary in colour, veining, texture and marking.</h1>
+<h1>Should at a later date your kitchen is being replaced by a contractor / cabinet maker that has a contract with Stonehaven Granite Works your quote will be VOID</h1>
+ <h1><strong>Thank you, we appreciate your business</strong></h1>
+</div>
+<br/><br/><br/>

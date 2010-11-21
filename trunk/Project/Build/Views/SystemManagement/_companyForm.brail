@@ -1,0 +1,45 @@
+﻿<?brail component CaptureFor, {@Id: "sidebar"}:
+  OutputSubView("/SystemManagement/_pricesSideMenu")    
+end?>
+
+${Form.FormTag({@immediate:"false", @useTitles:"true", @class:"cmxform"})}
+${Form.HiddenField("item.Id")}
+${Form.HiddenField("itemTip")}
+
+<p class="info" style="width:600px">Setup your Companies in the system.</p>
+${Form.Button("Save",{@onclick:"saveCompany();"})}
+${Form.Button("Cancel",{@onclick:"document.location='index.aspx'"})}
+<?brail if item.Id>0 :?>
+${Form.Button("Delete",{@onclick:"if(confirm('This will permanently delete ${item.Name} from the system, proceed?'))document.location='delete.aspx?id=${item.Id}&itemTip=${itemTip}'"})}
+<?brail end?>
+<fieldset>
+<legend>Details</legend>
+<ol>
+<li>
+   ${Form.LabelFor("item.Name","Name")}
+   ${Form.TextField("item.Name",{@style:"width:250px"})}
+</li>
+<li>
+   ${Form.LabelFor("item.Description","Description")}
+   ${Form.TextField("item.Description",{@style:"width:250px"})}
+</li>
+<li>
+   ${Form.LabelFor("item.Address","Address")}
+   ${Form.TextField("item.Address",{@style:"width:450px"})}
+</li>
+<li>
+   ${Form.LabelFor("item.Phone","Phone #")}
+   ${Form.TextField("item.Phone")}
+</li>
+<li>
+   ${Form.LabelFor("item.Fax","Fax #")}
+   ${Form.TextField("item.Fax")}
+</li>
+<li>
+   ${Form.LabelFor("item.Email","Email")}
+   ${Form.TextField("item.Email")}
+</li>
+</ol>
+</fieldset>
+
+${Form.EndFormTag()}

@@ -1,0 +1,11 @@
+<?brail component CaptureFor, {@Id: "menu"}: ?>
+    <ul class="hub_nav">
+       <li>${Url.Link("Quotations",{@controller:"QuoteManagement",@action:"index"})}</li>
+       <li>${Url.Link("Jobs",{@controller:"JobManagement",@action:"index"})}</li>
+       <li>${Url.Link("Calendar",{@controller:"CalendarManagement",@action:"index"})}</li>
+    <?brail output "<li>${Url.Link('System Management',{@controller:@SystemManagement,@action:@index})}</li>" if isAdmin?>
+    <?brail output "<li>${Url.Link('Reports',{@controller:@ReportsManagement,@action:@index})}</li>" if isAdmin?>
+    </ul>
+<?brail end ?>
+
+

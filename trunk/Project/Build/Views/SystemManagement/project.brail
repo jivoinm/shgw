@@ -1,0 +1,6 @@
+﻿<?brail OutputSubView("/SystemManagement/_scripts")?>
+<div id="content">
+<?brail OutputSubView("/SystemManagement/_projectForm") if ?item ?>
+</div>
+
+

@@ -1,0 +1,71 @@
+﻿${AppHelper.FieldSet("Total")}
+<ol>
+<li>
+    <label>Total SqFt</label>
+    ${item.Total.TotalSqFt}
+</li>
+</ol>
+
+<strong>Price per SqFt</strong><hr/>
+<ol>
+<li>
+    <label>Total SqFt Color Group</label>
+    ${item.Total.SqFt_ColorgroupTotal}
+</li>
+<li>
+    <label>Color Group price</label>
+    ${item.Total.SqFt_ColorgroupPrice}
+</li>
+<li>
+    <label>Color Group Total</label>
+    ${item.Total.Total_Colorgroup}
+</li>
+<li>
+    <label>Total SqFt Backsplash</label>
+    ${item.Total.SqFt_BackSplashTotal}
+</li>
+<li>
+    <label>Backsplash price</label>
+    ${item.Total.Total_Backsplash}
+</li>
+<li>
+    <label>Total SqFt Edge</label>
+    ${item.Total.SqFt_EdgeTotal}
+</li>
+<li>
+    <label>Edge Price</label>
+    ${item.Total.SqFt_EdgePrice}
+</li>
+<li>
+    <label>Total Edge</label>
+    ${item.Total.Total_Edge}
+</li>
+<li>
+    <label>Stove Price</label>
+    ${item.Total.Total_Stove}
+</li>
+<li>
+    <label>Sink Nr</label>
+    ${item.Total.Total_NrOfSinks}
+</li>
+<li>
+    <label>Sink Price</label>
+    ${item.Total.SinkPrice}
+</li>
+<li>
+    <label>Sink Total</label>
+    ${item.Total.Total_Sink}
+</li>
+<li>
+    <label>Bumpouts Nr.</label>
+    ${item.Total.Total_NrOfBumpouts}
+</li>
+<li>
+    <label>Bumpout Price</label>
+    ${item.Total.BumpoutPrice}
+</li>
+<li>
+    <label>Bumpout Price Total</label>
+    ${item.Total.Total_Bumpouts}
+</li>
+</ol>  

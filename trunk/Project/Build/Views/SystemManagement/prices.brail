@@ -1,0 +1,91 @@
+﻿<div id="tabledata" class="section">
+<fieldset>
+<?brail OutputSubView("/SystemManagement/_scripts")?>
+<div class="left">
+<div id="formContent">
+${Form.FormTag({@immediate:"false", @useTitles:"true", @class:"cmxform"})}
+<p class="info" style="width:600px">
+You need to select the combinations for each Company/Project and prices for ColorGroup/Edge/Sink/Stove/Thicknes. <br>
+Click Search to get the list of existing prices for selection made. <br>
+If you want to add a new price there, click on Add Price button, select the item set the prices and click Save button.<br>
+To adjust the prices, change them in the list and click save button.<br>
+To delete prices select them in the list and click delete button.<br>
+<br/>
+<i><small><strong>Note: The Price represents the price per sqFt that is used to calculate the total sqFt * price and the Supply and Supplay And Install are added to the total.</strong></small></i>
+</p>
+
+<fieldset>
+<legend>Price Search</legend>
+<ol>
+    <li>
+        <label>Company</label>
+        ${Form.Select("filter.CompanyId",companies,{@text:"Name",@value:"Id",@style:"width:250px"})}
+    </li>
+    <li>
+        <label>Project</label>
+        ${Form.Select("filter.ProjectId",projectItems,{@text:"Name",@value:"Id",@style:"width:250px"})}
+    </li>
+    <li>
+        <label>Prices For</label>
+        ${Form.Select("filter.PricesFor",pricesFor,{@style:"width:250px"})}
+    </li>
+</ol>
+<div style="vertical-align:middle;border-top-style:solid;border-top-width:1px" align='center'>
+  ${Form.Button("Search",{@onClick:"searchForm()"})}&nbsp;
+  ${Form.Button("Cancel",{@onClick:"location.reload(true)"})}
+  </div>
+</fieldset>
+
+<script>
+
+function searchForm(){
+    var dt = $('#form1').serializeArray();
+
+    $("#gridTable").flexOptions({params: dt});
+    $('#gridTable').flexOptions({newp: 1}).flexReload();
+    
+    return true;
+}
+
+function savePrices(){
+    var dt = $('#form1').serializeArray();
+    $.ajax({
+         type: "POST",
+         url: 'PriceSave.aspx',
+         data: dt,
+         success: function(msg){
+            alert('Saved with success!');
+            searchForm();
+            },
+         error: function(){
+            alert('Error saving prices!');
+            }
+         });
+
+}
+</script>
+
+<?brail component Flexgrid, {@Url:"PriceSearch.aspx",@Id:"gridTable", @Width:"620",@Title:"List of existing Prices",@UseRemotePaging:false}:
+section Buttons:?>
+[
+{name: 'Save', bclass: 'save', onpress: function(){savePrices();}},
+{name: 'Delete', bclass: 'delete', onpress: function(){deletePrice();}}
+]
+<?brail end
+section ColumnModel:?>
+[
+{display: 'Price / sqFt', name : 'Price', width : 80, sortable : false, align: 'center'},
+{display: 'Supply Price', name : 'SupplyPrice', width : 100, sortable : false, align: 'left'},
+{display: 'Supply And Install Price', name : 'SupplyAndInstallPrice', width : 120, sortable : false, align: 'left'},
+{display: 'Price For', name : 'PriceFor', width : 250, sortable : false, align: 'center'}
+]
+<?brail end
+end?>
+${Form.EndFormTag()}
+</div>
+</div>
+<div class="right">
+     <?brail OutputSubView("/SystemManagement/_pricesSideMenu") if ?item ?>
+</div>
+</fieldset>
+</div>

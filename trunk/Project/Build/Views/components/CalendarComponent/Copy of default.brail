@@ -1,0 +1,584 @@
+﻿<?brail component CaptureFor, {@Id: "script"}: ?>
+<style type="text/css">
+    body{margin:0;padding:0;overflow-y:hidden;}
+        html{overflow-y:hidden;}
+  </style>
+  <link type="text/css" rel="stylesheet" href="${siteRoot}/content/Calendar/calendar.css">
+
+<script type="text/javascript" src="${siteRoot}/content/Calendar/calendar.js"></script>
+  <style type="text/css">
+        .date-picker-off {border: 1px solid rgb(255, 255, 255);background-color: rgb(255, 255, 255);}
+  </style>
+<?brail end ?>
+
+  <div id="warningBox" style="color:#aa0000;">
+    MESSAGE
+  </div>
+
+  <div id="container" class="locale-en" style="width: 100&amp;percnt;; position: relative; height: 705px;">
+    <div class="calendar-container">
+      <div class="header" id="nav1" style="overflow:visible">
+        <div class="date-controls">
+          <table class="nav-table" cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+              <tr>
+                <td class="date-nav-buttons"><button class="today-button" id="todayButton1">Today</button><img src="${siteRoot}/Content/Calendar/btn_prev_sm.gif" width="22" height="17" alt="previous" title="previous"
+                class="navbutton navBack" id="navBack1"><img src="${siteRoot}/Content/Calendar/btn_next_sm.gif" width="22" height="17" alt="next" title="next" class="navbutton navForward" id="navForward1"></td>
+                <td id="dateEditableBox1" class="date-picker-off">
+                
+                <div class="date-top" id="currentDate1">
+                    ${Form.InputField("filter.Date")}
+                  </div>
+                </td>
+
+                <td id="dateMenuArrow1" class="date-picker-off" onmouseover="goog$calendar$CalendarContainer$1hoverDatePicker(true);"
+                onmouseout="goog$calendar$CalendarContainer$1hoverDatePicker(false);"
+                onmousedown="goog$calendar$CalendarContainer$1toggleDatePicker()">
+                <img src="${siteRoot}/Content/Calendar/menu_arrow_open.gif" id="arrowImg1" class="arrowImg" width="9" height="9"></td>
+
+                <td class="navSpacer">&nbsp;</td>
+
+                <td><img src="${siteRoot}/Content/Calendar/icon_print.gif" style="cursor: pointer;" onclick="goog$calendar$CalendarContainer$1printCalendar()" title="Print my calendar (shows preview)" width="16" height="16"></td>
+
+                <td>
+                  <div class="tab-name" onclick="goog$calendar$CalendarContainer$1printCalendar()">
+                  Print
+                  </div>
+                </td>
+
+                <td id="calendarTabs1">
+                  <table cellpadding="0" cellspacing="0">
+                    <tbody>
+                      <tr>
+                        <td class="view-tab">
+                          <div class=
+                          "view-tab-unselected first-tab t1">
+                            &nbsp;
+                          </div>
+
+                          <div class=
+                          "view-tab-unselected first-tab t2">
+                            &nbsp;
+                          </div>
+
+                          <div class=
+                          "view-tab-unselected first-tab tab-name"
+                          onclick=
+                          "goog$calendar$CalendarContainer$1changeTab('week')">
+                          Week
+                          </div>
+                        </td>
+
+                        <td class="view-tab">
+                          <div class="view-tab-selected t1">
+                            &nbsp;
+                          </div>
+
+                          <div class="view-tab-selected t2">
+                            &nbsp;
+                          </div>
+
+                          <div class="view-tab-selected tab-name"
+                          onclick=
+                          "goog$calendar$CalendarContainer$1changeTab('month')">
+                          Month
+                          </div>
+                        </td>
+
+                        <td class="view-tab">
+                          <div class=
+                          "view-tab-unselected last-tab t1">
+                            &nbsp;
+                          </div>
+
+                          <div class=
+                          "view-tab-unselected last-tab t2">
+                            &nbsp;
+                          </div>
+
+                          <div class=
+                          "view-tab-unselected last-tab tab-name"
+                          onclick=
+                          "goog$calendar$CalendarContainer$1changeTab('agenda')">
+                          Agenda
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+
+                <td class="calendar-nav"><img id=
+                "calendarListButton1" src=
+                "${siteRoot}/Content/Calendar/btn_menu6.gif" alt=""
+                title="" width="15" height="14"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="view-cap t1">
+        &nbsp;
+      </div>
+
+      <div class="view-cap t2">
+        &nbsp;
+      </div>
+<!--  ---------------- CONTENT ----------------------------- -->
+
+      <div class="view-container-border" id="calendarContainer1">
+        <div id="viewContainer1" class="view-container" style=
+        "height: 653px;">
+          <table class="monthview mvcontainer" cellpadding="0"
+          cellspacing="0">
+            <tbody>
+              <tr class="daynames">
+                <th title="Sun" scope="col">Sun</th>
+
+                <th title="Mon" scope="col">Mon</th>
+
+                <th title="Tue" scope="col">Tue</th>
+
+                <th title="Wed" scope="col">Wed</th>
+
+                <th title="Thu" scope="col">Thu</th>
+
+                <th title="Fri" scope="col">Fri</th>
+
+                <th title="Sat" scope="col">Sat</th>
+              </tr>
+
+<!-- WEEKS -->
+
+              <tr class="week" style="height: 19&amp;percnt;">
+                <td>
+                  <h3 class="nonmonthday">28</h3>
+                </td>
+
+                <td>
+                  <h3 class="nonmonthday">29</h3>
+                </td>
+
+                <td>
+                  <h3 class="nonmonthday">30</h3>
+                </td>
+
+                <td>
+                  <h3>1</h3>
+                </td>
+
+                <td>
+                  <h3>2</h3>
+                </td>
+
+                <td>
+                  <h3>3</h3>
+                </td>
+
+                <td>
+                  <h3>4</h3>
+                </td>
+              </tr>
+
+              <tr class="week" style="height: 19&amp;percnt;">
+                <td>
+                  <h3>5</h3>
+                </td>
+
+                <td>
+                  <h3>6</h3>
+                </td>
+
+                <td>
+                  <h3>7</h3>
+                </td>
+
+                <td>
+                  <h3>8</h3>
+                </td>
+
+                <td>
+                  <h3>9</h3>
+                </td>
+
+                <td>
+                  <h3>10</h3>
+                </td>
+
+                <td>
+                  <h3>11</h3>
+                </td>
+              </tr>
+
+              <tr class="week" style="height: 19&amp;percnt;">
+                <td>
+                  <h3>12</h3>
+                </td>
+
+                <td>
+                  <h3>13</h3>
+                </td>
+
+                <td>
+                  <h3>14</h3>
+                </td>
+
+                <td>
+                  <h3>15</h3>
+                </td>
+
+                <td>
+                  <h3>16</h3>
+                </td>
+
+                <td>
+                  <h3>17</h3>
+                </td>
+
+                <td>
+                  <h3>18</h3>
+<!-- EVENT -->
+                  <div class="event alldayevent startallday alldayleftside alldayrightside" style="z-index: 20081018; background-color: #668CD9;" onclick="openMVBubble2(0, event);">
+                    <div class="ec" style="background-color: #668CD9;">
+                      &nbsp;
+                    </div>
+
+                    <div class="bg" style="background-color: #668CD9;">
+                      &nbsp;
+                    </div>
+                        <span class="eventtitle">EVENT!!!</span>
+                        <div class="ec" style="background-color: #668CD9;">
+                            &nbsp;
+                        </div>
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="week" style="height: 19&amp;percnt;">
+                <td>
+                  <h3>19</h3>
+                </td>
+
+                <td>
+                  <h3>20</h3>
+                </td>
+
+                <td>
+                  <h3>21</h3>
+                </td>
+
+                <td>
+                  <h3>22</h3>
+                </td>
+
+                <td class="today">
+                  <h3>23</h3>
+                </td>
+
+                <td>
+                  <h3>24</h3>
+                </td>
+
+                <td>
+                  <h3>25</h3>
+                </td>
+              </tr>
+
+              <tr class="week" style="height: 19&amp;percnt;">
+                <td>
+                  <h3>26</h3>
+                </td>
+
+                <td>
+                  <h3>27</h3>
+                </td>
+
+                <td>
+                  <h3>28</h3>
+                </td>
+
+                <td>
+                  <h3>29</h3>
+                </td>
+
+                <td>
+                  <h3>30</h3>
+                </td>
+
+                <td>
+                  <h3>31</h3>
+                </td>
+
+                <td>
+                  <h3 class="nonmonthday">1</h3>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <table id="footer1" class="footer" cellpadding="0"
+        cellspacing="0" width="100&amp;percnt;">
+          <tbody>
+            <tr>
+              <td valign="bottom" id="timezone">Events shown in
+              time zone: Eastern Time</td>
+
+              <td valign="bottom">&nbsp;</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div id="loading1" class="loading" style=
+        "right: 25px; display: none;">
+          Loading...
+        </div>
+      </div>
+
+      <div class="view-cap t2">
+        &nbsp;
+      </div>
+
+      <div class="view-cap t1">
+        &nbsp;
+      </div>
+    </div>
+
+    <div id="dpPopup1" class="goog-cal-dp-popup">
+      <table cols="7" cellspacing="0" cellpadding="0" id=
+      "dpPopup1_tbl" class="goog-cal-dp-monthtable" style=
+      "-moz-user-select:none;-webkit-user-select:none;">
+        <tbody>
+          <tr style="cursor:pointer" class="goog-cal-dp-heading"
+          id="dpPopup1_header">
+            <td id="dpPopup1_mhl" class="goog-cal-dp-prev">
+            &#171;</td>
+
+            <td colspan="5" id="dpPopup1_mhc" class=
+            "goog-cal-dp-cur">October 2008</td>
+
+            <td id="dpPopup1_mhr" class="goog-cal-dp-next">
+            &#187;</td>
+          </tr>
+
+          <tr class="goog-cal-dp-days" id="dpPopup1_dow">
+            <td class="goog-cal-dp-dayh" id="dpPopup1_dow_0">S</td>
+
+            <td class="goog-cal-dp-dayh" id="dpPopup1_dow_1">M</td>
+
+            <td class="goog-cal-dp-dayh" id="dpPopup1_dow_2">T</td>
+
+            <td class="goog-cal-dp-dayh" id="dpPopup1_dow_3">W</td>
+
+            <td class="goog-cal-dp-dayh" id="dpPopup1_dow_4">T</td>
+
+            <td class="goog-cal-dp-dayh" id="dpPopup1_dow_5">F</td>
+
+            <td class="goog-cal-dp-dayh" id="dpPopup1_dow_6">S</td>
+          </tr>
+
+          <tr style="cursor:pointer" id="dpPopup1_row_0">
+            <td id="dpPopup1_day_19765" class=
+            "goog-cal-dp-weekend goog-cal-dp-offmonth goog-cal-dp-day-left">
+            21</td>
+
+            <td id="dpPopup1_day_19766" class=
+            "goog-cal-dp-weekday goog-cal-dp-offmonth">22</td>
+
+            <td id="dpPopup1_day_19767" class=
+            "goog-cal-dp-weekday goog-cal-dp-offmonth">23</td>
+
+            <td id="dpPopup1_day_19768" class=
+            "goog-cal-dp-weekday goog-cal-dp-offmonth">24</td>
+
+            <td id="dpPopup1_day_19769" class=
+            "goog-cal-dp-weekday goog-cal-dp-offmonth">25</td>
+
+            <td id="dpPopup1_day_19770" class=
+            "goog-cal-dp-weekday goog-cal-dp-offmonth">26</td>
+
+            <td id="dpPopup1_day_19771" class=
+            "goog-cal-dp-weekend goog-cal-dp-offmonth goog-cal-dp-day-right">
+            27</td>
+          </tr>
+
+          <tr style="cursor:pointer" id="dpPopup1_row_1">
+            <td id="dpPopup1_day_19772" class=
+            "goog-cal-dp-weekend goog-cal-dp-offmonth goog-cal-dp-day-left">
+            28</td>
+
+            <td id="dpPopup1_day_19773" class=
+            "goog-cal-dp-weekday goog-cal-dp-offmonth">29</td>
+
+            <td id="dpPopup1_day_19774" class=
+            "goog-cal-dp-weekday goog-cal-dp-offmonth">30</td>
+
+            <td id="dpPopup1_day_19777" class=
+            "goog-cal-dp-weekday-selected goog-cal-dp-onmonth">
+            1</td>
+
+            <td id="dpPopup1_day_19778" class=
+            "goog-cal-dp-weekday-selected goog-cal-dp-onmonth">
+            2</td>
+
+            <td id="dpPopup1_day_19779" class=
+            "goog-cal-dp-weekday-selected goog-cal-dp-onmonth">
+            3</td>
+
+            <td id="dpPopup1_day_19780" class=
+            "goog-cal-dp-weekend-selected goog-cal-dp-onmonth goog-cal-dp-day-right">
+            4</td>
+          </tr>
+
+          <tr style="cursor:pointer" id="dpPopup1_row_2">
+            <td id="dpPopup1_day_19781" class=
+            "goog-cal-dp-weekend-selected goog-cal-dp-onmonth goog-cal-dp-day-left">
+            5</td>
+
+            <td id="dpPopup1_day_19782" class=
+            "goog-cal-dp-weekday-selected goog-cal-dp-onmonth">
+            6</td>
+
+            <td id="dpPopup1_day_19783" class=
+            "goog-cal-dp-weekday-selected goog-cal-dp-onmonth">
+            7</td>
+
+            <td id="dpPopup1_day_19784" class=
+            "goog-cal-dp-weekday-selected goog-cal-dp-onmonth">
+            8</td>
+
+            <td id="dpPopup1_day_19785" class=
+            "goog-cal-dp-weekday-selected goog-cal-dp-onmonth">
+            9</td>
+
+            <td id="dpPopup1_day_19786" class=
+            "goog-cal-dp-weekday-selected goog-cal-dp-onmonth">
+            10</td>
+
+            <td id="dpPopup1_day_19787" class=
+            "goog-cal-dp-weekend-selected goog-cal-dp-onmonth goog-cal-dp-day-right">
+            11</td>
+          </tr>
+
+          <tr style="cursor:pointer" id="dpPopup1_row_3">
+            <td id="dpPopup1_day_19788" class=
+            "goog-cal-dp-weekend-selected goog-cal-dp-onmonth goog-cal-dp-day-left">
+            12</td>
+
+            <td id="dpPopup1_day_19789" class=
+            "goog-cal-dp-weekday-selected goog-cal-dp-onmonth">
+            13</td>
+
+            <td id="dpPopup1_day_19790" class=
+            "goog-cal-dp-weekday-selected goog-cal-dp-onmonth">
+            14</td>
+
+            <td id="dpPopup1_day_19791" class=
+            "goog-cal-dp-weekday-selected goog-cal-dp-onmonth">
+            15</td>
+
+            <td id="dpPopup1_day_19792" class=
+            "goog-cal-dp-weekday-selected goog-cal-dp-onmonth">
+            16</td>
+
+            <td id="dpPopup1_day_19793" class=
+            "goog-cal-dp-weekday-selected goog-cal-dp-onmonth">
+            17</td>
+
+            <td id="dpPopup1_day_19794" class=
+            "goog-cal-dp-weekend-selected goog-cal-dp-onmonth goog-cal-dp-day-right">
+            18</td>
+          </tr>
+
+          <tr style="cursor:pointer" id="dpPopup1_row_4">
+            <td id="dpPopup1_day_19795" class=
+            "goog-cal-dp-weekend-selected goog-cal-dp-onmonth goog-cal-dp-day-left">
+            19</td>
+
+            <td id="dpPopup1_day_19796" class=
+            "goog-cal-dp-weekday-selected goog-cal-dp-onmonth">
+            20</td>
+
+            <td id="dpPopup1_day_19797" class=
+            "goog-cal-dp-weekday-selected goog-cal-dp-onmonth">
+            21</td>
+
+            <td id="dpPopup1_day_19798" class=
+            "goog-cal-dp-weekday-selected goog-cal-dp-onmonth">
+            22</td>
+
+            <td id="dpPopup1_day_19799" class=
+            "goog-cal-dp-weekday-selected goog-cal-dp-today-selected goog-cal-dp-onmonth">
+            23</td>
+
+            <td id="dpPopup1_day_19800" class=
+            "goog-cal-dp-weekday-selected goog-cal-dp-onmonth">
+            24</td>
+
+            <td id="dpPopup1_day_19801" class=
+            "goog-cal-dp-weekend-selected goog-cal-dp-onmonth goog-cal-dp-day-right">
+            25</td>
+          </tr>
+
+          <tr style="cursor:pointer" id="dpPopup1_row_5">
+            <td id="dpPopup1_day_19802" class=
+            "goog-cal-dp-weekend-selected goog-cal-dp-onmonth goog-cal-dp-day-left">
+            26</td>
+
+            <td id="dpPopup1_day_19803" class=
+            "goog-cal-dp-weekday-selected goog-cal-dp-onmonth">
+            27</td>
+
+            <td id="dpPopup1_day_19804" class=
+            "goog-cal-dp-weekday-selected goog-cal-dp-onmonth">
+            28</td>
+
+            <td id="dpPopup1_day_19805" class=
+            "goog-cal-dp-weekday-selected goog-cal-dp-onmonth">
+            29</td>
+
+            <td id="dpPopup1_day_19806" class=
+            "goog-cal-dp-weekday-selected goog-cal-dp-onmonth">
+            30</td>
+
+            <td id="dpPopup1_day_19807" class=
+            "goog-cal-dp-weekday-selected goog-cal-dp-onmonth">
+            31</td>
+
+            <td id="dpPopup1_day_19809" class=
+            "goog-cal-dp-weekend goog-cal-dp-offmonth goog-cal-dp-day-right">
+            1</td>
+          </tr>
+
+          <tr style="cursor:pointer" id="dpPopup1_row_6">
+            <td id="dpPopup1_day_19810" class=
+            "goog-cal-dp-weekend goog-cal-dp-offmonth goog-cal-dp-day-left">
+            2</td>
+
+            <td id="dpPopup1_day_19811" class=
+            "goog-cal-dp-weekday goog-cal-dp-offmonth">3</td>
+
+            <td id="dpPopup1_day_19812" class=
+            "goog-cal-dp-weekday goog-cal-dp-offmonth">4</td>
+
+            <td id="dpPopup1_day_19813" class=
+            "goog-cal-dp-weekday goog-cal-dp-offmonth">5</td>
+
+            <td id="dpPopup1_day_19814" class=
+            "goog-cal-dp-weekday goog-cal-dp-offmonth">6</td>
+
+            <td id="dpPopup1_day_19815" class=
+            "goog-cal-dp-weekday goog-cal-dp-offmonth">7</td>
+
+            <td id="dpPopup1_day_19816" class=
+            "goog-cal-dp-weekend goog-cal-dp-offmonth goog-cal-dp-day-right">
+            8</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div style=
+  "position: absolute; display: none; z-index: 2.5e+007;"></div>

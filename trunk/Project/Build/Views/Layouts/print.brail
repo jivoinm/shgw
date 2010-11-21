@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+	
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<title>SHGW.</title>
+       
+        <!-- CSS Reset -->
+		<link rel="stylesheet" type="text/css" href="${webSite}${siteroot}/content/css/reset.css" media="screen">
+        <link rel="stylesheet" type="text/css" media="all" href="${webSite}${siteroot}/Content/css/style.css" />
+        <!-- Fluid 960 Grid System - CSS framework -->
+		<link rel="stylesheet" type="text/css" href="${webSite}${siteroot}/content/css/grid.css" media="screen">
+		
+        <!-- IE Fixes for the Fluid 960 Grid System -->
+        <!--[if IE 6]><link rel="stylesheet" type="text/css" href="css/ie6.css" media="screen" /><![endif]-->
+		<!--[if IE 7]><link rel="stylesheet" type="text/css" href="css/ie.css" media="screen" /><![endif]-->
+
+
+        <!-- Main stylesheet 
+        <link rel="stylesheet" type="text/css" href="${webSite}${siteroot}/content/css/styles.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="${webSite}${siteroot}/content/css/theme-blue.css" media="screen">
+        -->
+       <style type="text/css" media="print">
+
+            @page port {size: portrait;}
+            @page land {size: landscape;}
+
+            .portrait {page: port;}
+
+            .landscape {page: land;}
+
+        </style>
+        ${?script}
+	</head><body class="landscape">
+    	
+        <div id="header">
+        
+            <!-- Header. Status part -->
+            <div id="header-status" style="height: 38px;">
+    
+            </div> <!-- End #header-status -->
+            
+            <!-- Header. Main part -->
+            <div id="header-main">
+                <div class="container_12">
+                    <div class="grid_12">
+                        <div id="logo">
+    
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div> <!-- End #header-main -->
+        
+        </div> <!-- End #header -->
+        
+
+        
+        
+		<div class="container_12">
+        ${ChildOutput} 
+            <div class="clear"></div>
+        </div> <!-- End .container_12 -->
+	</body></html>

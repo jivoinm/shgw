@@ -1,0 +1,7 @@
+<?brail
+output "<div id=\"fail\" class=\"info_div\"><span class=\"ico_cancel\">${?error}</span></div>" if IsDefined('error')
+output "<div id=\"success\" class=\"info_div\"><span class=\"ico_success\">${?message}</span></div>" if IsDefined('message')
+output "<div id=\"warning\" class=\"info_div\"><span class=\"ico_error\">${?warning}</span></div>" if IsDefined('warning')
+?>
+
+

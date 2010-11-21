@@ -1,0 +1,9 @@
+[Boo.Lang.ExtensionAttribute]
+static def IsEmpty(val as duck) as bool:
+    try:
+        return true if val is null
+        return val.GetEnumerator().MoveNext() == false
+        except e as System.MissingMethodException:
+        return true
+    end
+end
